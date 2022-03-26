@@ -1,0 +1,163 @@
+@use './Variables' as *;
+
+.section4 {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 0 2rem;
+  overflow: hidden;
+  position: relative;
+  z-index: 30;
+  font-family: Cubano;
+
+  & * {
+    font-family: inherit;
+    font-weight: bold;
+  }
+
+  h3 {
+    font-size: 3rem;
+    text-align: center;
+  }
+
+  .section4_cards {
+    width: 100%;
+    height: 45vh;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 1rem;
+    overflow-x: auto;
+    overflow-y: hidden;
+    font-family: Founders_Grotesk;
+
+    &::-webkit-scrollbar {
+      background-color: $grey;
+      height: 5px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: #888;
+    }
+  }
+
+  .section4_cards div {
+    position: relative;
+    min-width: 21rem;
+    min-height: 19rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    border-radius: 12px;
+    background-color: $grey;
+    font-size: 1.9rem;
+    box-shadow: 8px 10px 16px -1px rgba(0, 0, 0, 0.19);
+    -webkit-box-shadow: 8px 10px 16px -1px rgba(0, 0, 0, 0.19);
+    -moz-box-shadow: 8px 10px 16px -1px rgba(0, 0, 0, 0.19);
+  }
+
+  .section4_cards span {
+    width: fit-content;
+    text-align: left;
+  }
+
+  .section4_cards p {
+    position: absolute;
+    bottom: 35px;
+    right: 50px;
+    font-size: 1.7rem;
+    font-weight: 100;
+    font-style: italic;
+    color: rgba(255, 255, 255, 0.52);
+  }
+
+  // Ipad pro
+  @media (max-width: 1024px) {
+    .section4_cards {
+      width: 100%;
+      height: 45vh;
+      align-items: flex-end;
+      gap: 2rem;
+      padding-bottom: 2rem;
+    }
+
+    .section4_cards div {
+      min-width: 24rem;
+      height: 20rem;
+      font-size: 3rem;
+      padding: 0 3rem;
+
+      span {
+        text-align: left;
+      }
+    }
+  }
+
+  // Iphone 12 pro
+  @media (max-width: 450px) {
+    margin: 5rem 0;
+    padding: 0 3rem;
+    height: fit-content;
+
+    h3 {
+      font-size: 1.5rem;
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .section4_cards {
+      flex-direction: column;
+      height: fit-content;
+    }
+    .section4_cards div {
+      min-width: 100%;
+      height: 90%;
+      padding: 0 3rem;
+
+      span {
+        font-size: 2rem;
+        text-align: left;
+      }
+    }
+  }
+
+  // -360
+  @media (max-width: 390px) {
+    margin: 5rem 0;
+    padding: 0 3rem;
+    height: fit-content;
+
+    h3 {
+      font-size: 1.1rem;
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .section4_cards {
+      flex-direction: column;
+      height: fit-content;
+    }
+    .section4_cards div {
+      min-width: 100%;
+      min-height: 11rem;
+      height: 16rem;
+      padding: 0 1rem;
+      flex: unset;
+
+      span {
+        font-size: 2rem;
+        text-align: left;
+      }
+    }
+
+    .section4_cards p {
+      right: 20px;
+      bottom: 10px;
+      font-size: 1.2rem;
+    }
+  }
+}

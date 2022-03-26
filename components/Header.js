@@ -4,14 +4,17 @@ import styles from '@/styles/Header.module.scss';
 function Header() {
   return (
     <header className={styles.header}>
-      <div className="head-content-1">
-        <Image
-          src="http://localhost:3000/favicon.jpg"
-          alt="Logo"
-          width={30}
-          height={30}
-          className={styles.logo}
-        />
+      <div className={styles.head_content_1}>
+        <div className={styles.logo}>
+          <Image
+            src="http://localhost:3000/favicon.jpg"
+            alt="logo"
+            layout="fill"
+            objectFit="cover"
+            width="100%"
+            height="100"
+          />
+        </div>
         <span>fortune web works</span>
       </div>
       <div className={styles.head_content_2}>

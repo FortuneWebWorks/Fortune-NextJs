@@ -11,14 +11,16 @@ import Hat3 from '@/svg/hat/hat.svg';
 export default function Home() {
   const uri = 'http://localhost:3000';
 
+  // console.log(Hat1);
+
   return (
     <Layout>
       <>
         <section className={section1.section1}>
           <div className={section1.section1_text}>
             <h1>
-              Rapidly build modern websites without ever leaving{' '}
-              <span>your HTML</span>.
+              Rapidly build modern websites without ever leaving
+              <span>your HTML</span>. EVER LEAVING YOUR HTML
             </h1>
             <div>
               <button className={section1.hide_us}>HIRE US &#127881;</button>
@@ -26,9 +28,27 @@ export default function Home() {
             </div>
           </div>
           <div className={`${section1.section1_icon} ${section1.container}`}>
-            <Hat1 className={`${section1.hat1} ${section1.hat}`} />
-            <Hat2 className={`${section1.hat2} ${section1.hat}`} />
-            <Hat3 className={`${section1.hat3} ${section1.hat}`} />
+            <div className={`${section1.hat1} ${section1.hat}`}>
+              <Image
+                src={'http://localhost:3000/hat/chapue.svg'}
+                layout="fill"
+                alt="Hell"
+              />
+            </div>
+            <div className={`${section1.hat2} ${section1.hat}`}>
+              <Image
+                src={'http://localhost:3000/hat/top-layer.svg'}
+                layout="fill"
+                alt="Hell"
+              />
+            </div>
+            <div className={`${section1.hat3} ${section1.hat}`}>
+              <Image
+                src={'http://localhost:3000/hat/hat.svg'}
+                layout="fill"
+                alt="Hell"
+              />
+            </div>
             <canvas id="canvas"></canvas>
           </div>
 
@@ -77,7 +97,7 @@ export default function Home() {
                 </div>
               </div>
 
-              <img src={uri + '/loading.gif'} alt="Loading..." />
+              {/* <img src={uri + '/loading.gif'} alt="Loading..." /> */}
             </div>
 
             <div

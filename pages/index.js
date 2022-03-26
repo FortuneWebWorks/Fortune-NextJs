@@ -1,17 +1,15 @@
+import { useRef, useEffect } from 'react';
 import Image from 'next/image';
 import Layout from '@/components/Layout';
 import section1 from '@/styles/Section1.module.scss';
 import section2 from '@/styles/Section2.module.scss';
 import section3 from '@/styles/Section3.module.scss';
 import section4 from '@/styles/Section4.module.scss';
-import Hat1 from '@/svg/hat/chapue.svg';
-import Hat2 from '@/svg/hat/top-layer.svg';
-import Hat3 from '@/svg/hat/hat.svg';
+import HatAnimation from '@/components/HatAnimation';
 
 export default function Home() {
-  const uri = 'http://localhost:3000';
-
-  // console.log(Hat1);
+  const container = useRef();
+  const canvas = useRef();
 
   return (
     <Layout>
@@ -27,30 +25,7 @@ export default function Home() {
               <button className={section1.hide_us}>GET A FREE ANALSYS</button>
             </div>
           </div>
-          <div className={`${section1.section1_icon} ${section1.container}`}>
-            <div className={`${section1.hat1} ${section1.hat}`}>
-              <Image
-                src={'http://localhost:3000/hat/chapue.svg'}
-                layout="fill"
-                alt="Hell"
-              />
-            </div>
-            <div className={`${section1.hat2} ${section1.hat}`}>
-              <Image
-                src={'http://localhost:3000/hat/top-layer.svg'}
-                layout="fill"
-                alt="Hell"
-              />
-            </div>
-            <div className={`${section1.hat3} ${section1.hat}`}>
-              <Image
-                src={'http://localhost:3000/hat/hat.svg'}
-                layout="fill"
-                alt="Hell"
-              />
-            </div>
-            <canvas id="canvas"></canvas>
-          </div>
+          <HatAnimation />
 
           <div className={section1.section1_buttons}>
             <button className={section1.hide_us}>HIRE US &#127881;</button>

@@ -18,10 +18,23 @@ function HatAnimation() {
     canvas.current.height = containerInfo.current.height;
     c.current = canvas.current.getContext('2d');
 
-    // setInterval(() => {
-    //   cancelAnimationFrame(animation);
-    //   startBuilding('auto');
-    // }, 1000);
+    let interval = setInterval(() => {
+      cancelAnimationFrame(animation);
+      startBuilding('auto');
+    }, 1000);
+
+    window.addEventListener('focus', () => {
+      interval = setInterval(() => {
+        cancelAnimationFrame(animation);
+        startBuilding('auto');
+      }, 1000);
+    });
+
+    window.addEventListener('blur', () => {
+      console.log('Fuck');
+      clearInterval(interval);
+      stars = [];
+    });
 
     return () => {
       // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -30,24 +43,21 @@ function HatAnimation() {
   }, []);
 
   class Star {
-    constructor(x, y, dx, dy, size, fadeTime) {
+    constructor(x, y, dx, dy, size, fadeTime, id) {
       this.x = x;
       this.y = y;
       this.dx = dx;
       this.dy = dy;
       this.size = size;
-      this.fadeTime = fadeTime;
+      this.fadeTime = Number(fadeTime).toFixed(4);
       this.opacity = 1;
+      this.id = id;
     }
 
     createStar() {
       c.current.beginPath();
       c.current.font = `${this.size}px verdana, sans-serif`;
-      if (this.opacity <= 0) {
-        c.current.globalAlpha = 0;
-      } else {
-        c.current.globalAlpha = this.opacity;
-      }
+      c.current.globalAlpha = this.opacity >= 0 ? this.opacity : 0;
       c.current.fillText('✨', this.x, this.y);
       c.current.closePath();
     }
@@ -55,13 +65,13 @@ function HatAnimation() {
     update(index) {
       this.x += this.dx;
       this.y -= this.dy;
-      if (this.opacity > 0) {
+      if (this.opacity >= 0) {
         this.opacity -= this.fadeTime;
       } else {
-        stars.splice(index, 1);
+        delete stars[index];
       }
 
-      this.createStar();
+      this.createStar(index);
     }
   }
 
@@ -71,10 +81,12 @@ function HatAnimation() {
         const size = Math.random() * 30 + 5;
         const dx = (Math.random() - 0.5) * 0.5;
         const dy = Math.random() * 0.5;
-        const fadeTime = Math.random() * 0.0002 + 0.0015;
+        const min = 0.01,
+          max = 0.001,
+          fadeTime = Math.random() * (max - min) + min;
         const x = canvas.current.width / 2 - 20;
         const y = canvas.current.height - 80;
-        stars.push(new Star(x, y, dx, dy, size, fadeTime));
+        stars.push(new Star(x, y, dx, dy, size, fadeTime.toFixed(3), i));
       }
 
       const animate = () => {
@@ -88,14 +100,18 @@ function HatAnimation() {
 
       animate();
     } else {
-      for (let i = 0; i < 10; i++) {
+      for (let i = 0; i < 100; i++) {
         const size = Math.random() * 30 + 5;
         const dx = (Math.random() - 0.5) * 2.5;
         const dy = Math.random() * 5 + 1;
-        const fadeTime = Math.random() * 0.001 + 0.009;
+
+        const min = 0.01,
+          max = 0.02,
+          fadeTime = Math.random() * (max - min) + min;
+
         const x = canvas.current.width / 2 - 20;
         const y = canvas.current.height - 80;
-        stars.push(new Star(x, y, dx, dy, size, fadeTime));
+        stars.push(new Star(x, y, dx, dy, size, fadeTime.toFixed(3), i));
       }
 
       const animate = () => {

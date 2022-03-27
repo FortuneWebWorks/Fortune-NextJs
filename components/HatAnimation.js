@@ -33,6 +33,7 @@ function HatAnimation() {
     window.addEventListener('blur', () => {
       console.log('Fuck');
       clearInterval(interval);
+      // eslint-disable-next-line react-hooks/exhaustive-deps
       stars = [];
     });
 
@@ -58,7 +59,13 @@ function HatAnimation() {
       c.current.beginPath();
       c.current.font = `${this.size}px verdana, sans-serif`;
       c.current.globalAlpha = this.opacity >= 0 ? this.opacity : 0;
-      c.current.fillText('✨', this.x, this.y);
+      if (false) {
+        c.current.fillText('✨', this.x, this.y);
+      } else {
+        let img = document.getElementById('sparks');
+        // console.log(img);
+        c.current.drawImage(img, this.x, this.y, this.size, this.size);
+      }
       c.current.closePath();
     }
 
@@ -167,6 +174,13 @@ function HatAnimation() {
         />
       </div>
       <canvas id="canvas" ref={canvas}></canvas>
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src="http://localhost:3000/sparkles.svg"
+        alt="d"
+        id="sparks"
+        style={{ display: 'none' }}
+      />
     </div>
   );
 }

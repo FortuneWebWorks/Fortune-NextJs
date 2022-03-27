@@ -77,7 +77,7 @@ function HatAnimation() {
 
   const startBuilding = (mode) => {
     if (mode === 'auto') {
-      for (let i = 0; i < 1; i++) {
+      for (let i = 0; i < 5; i++) {
         const size = Math.random() * 30 + 5;
         const dx = (Math.random() - 0.5) * 0.5;
         const dy = Math.random() * 0.5;

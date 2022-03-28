@@ -6,6 +6,7 @@ import section2 from '@/styles/Section2.module.scss';
 import section3 from '@/styles/Section3.module.scss';
 import section4 from '@/styles/Section4.module.scss';
 import HatAnimation from '@/components/HatAnimation';
+import BrowserAnimation from '@/components/BrowserAnimation';
 
 export default function Home() {
   const container = useRef();
@@ -58,57 +59,7 @@ export default function Home() {
             id.
           </h2>
           <div className={section2.section2_browsers} id="section2-scroll">
-            <div className={section2.section2_icnon}>
-              <div className={section2.section2_searchbar}>
-                <div className={section2.buttons}>
-                  <div className={section2.btn}></div>
-                  <div className={section2.btn}></div>
-                  <div className={`${section2.btn} ${section2.last_btn}`}></div>
-                  <div className={section2.tab}></div>
-                  <div className={section2.tab}></div>
-                </div>
-                <div className={section2.navigation}>
-                  <div></div>
-                </div>
-              </div>
-
-              {/* <img src={uri + '/loading.gif'} alt="Loading..." /> */}
-            </div>
-
-            <div
-              className={`
-                ${section2.section2_icnon}
-                ${section2.section2_goodBrowser}
-              `}
-            >
-              <div className={section2.section2_searchbar}>
-                <div className={section2.buttons}>
-                  <div className={section2.btn}></div>
-                  <div className={section2.btn}></div>
-                  <div className={`${section2.btn} ${section2.last_btn}`}></div>
-                  <div className={section2.tab}></div>
-                  <div className={section2.tab}></div>
-                </div>
-                <div className={section2.navigation}>
-                  <div></div>
-                </div>
-              </div>
-              <div className={section2.section2_content}>
-                <div className={section2.fadein_target}></div>
-                <div className={section2.cc_container}>
-                  <div className={section2.cc}>
-                    <div className={section2.fadein_target}></div>
-                    <div className={section2.fadein_target}></div>
-                    <div className={section2.fadein_target}></div>
-                    <div className={section2.fadein_target}></div>
-                  </div>
-                  <div
-                    className={`${section2.fadein_target} ${section2.cc_side}`}
-                  ></div>
-                </div>
-                <div className={section2.fadein_target}></div>
-              </div>
-            </div>
+            <BrowserAnimation />
           </div>
         </section>
 

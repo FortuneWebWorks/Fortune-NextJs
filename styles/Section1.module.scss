@@ -107,19 +107,21 @@
   }
 
   .hat1 {
+    width: 12rem;
     bottom: 40%;
     left: 49%;
     z-index: 1;
   }
 
   .hat3 {
-    bottom: 25%;
+    bottom: 23%;
     z-index: 3;
   }
 
   .hat2 {
     width: 7.7rem;
-    bottom: 38%;
+    height: 3.6rem;
+    bottom: 40%;
     z-index: 4;
   }
 
@@ -184,7 +186,7 @@
     }
 
     .hat2 {
-      width: 12rem;
+      width: 12.4rem;
       bottom: 45%;
       z-index: 4;
     }
@@ -284,24 +286,90 @@
     }
 
     .hat1 {
-      bottom: 42%;
+      width: 12rem;
+      bottom: 30%;
       left: 49%;
       z-index: 1;
     }
 
     .hat3 {
-      bottom: 21%;
+      bottom: 8%;
       z-index: 3;
     }
 
     .hat2 {
-      width: 7.2rem;
-      bottom: 38%;
+      width: 7.4rem;
+      bottom: 26%;
       z-index: 4;
     }
 
     canvas {
-      bottom: 0;
+      bottom: 7%;
+    }
+  }
+
+  @media (max-width: 360px) {
+    height: 37rem;
+    h1 {
+      font-size: 1.6rem;
+    }
+
+    .section1_buttons {
+      button {
+        font-size: 1.2rem;
+        padding: 1rem 0.7rem;
+      }
+    }
+
+    .hat1 {
+      width: 12rem;
+      bottom: 30%;
+      left: 49%;
+      z-index: 1;
+    }
+
+    .hat3 {
+      bottom: 5%;
+      z-index: 3;
+    }
+
+    .hat2 {
+      width: 8rem;
+      bottom: 26%;
+      z-index: 4;
+    }
+  }
+
+  @media (max-width: 300px) {
+    height: 39rem;
+
+    h1 {
+      font-size: 1.6rem;
+    }
+
+    .section1_buttons {
+      button {
+        font-size: 1.2rem;
+        padding: 1rem 0.7rem;
+      }
+    }
+
+    .hat1 {
+      width: 12rem;
+      bottom: 30%;
+      left: 49%;
+      z-index: 1;
+    }
+
+    .hat3 {
+      bottom: -1%;
+      z-index: 3;
+    }
+
+    .hat2 {
+      width: 8rem;
+      bottom: 25.3%;
+      z-index: 4;
     }
   }
 }

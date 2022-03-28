@@ -7,6 +7,7 @@ import section3 from '@/styles/Section3.module.scss';
 import section4 from '@/styles/Section4.module.scss';
 import HatAnimation from '@/components/HatAnimation';
 import BrowserAnimation from '@/components/BrowserAnimation';
+import TecsAnimation from '@/components/TecsAnimation';
 
 export default function Home() {
   const container = useRef();
@@ -93,13 +94,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section className={section3.section3}>
-          <canvas id="tecs"></canvas>
-          <div className={section3.section3_text}>
-            <p>go to mooonnnnn &#128640;</p>
-            <p>WITH THE MODERN WEB</p>
-          </div>
-        </section>
+        <TecsAnimation />
       </>
     </Layout>
   );

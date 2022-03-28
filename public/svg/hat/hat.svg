@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="164.743" height="99.612" viewBox="0 0 164.743 99.612">
+  <g id="The_Hat" data-name="The Hat" transform="translate(-771.203 -838.225)">
+    <g transform="translate(734.229 758.078)">
+      <rect width="142" height="75" rx="37.5" transform="translate(45.857 91.58)" fill="#414666"/>
+    </g>
+    <g>
+      <path id="the_orange_band" d="M798.975,884.652l70.945,7.74,71.59-7.74" transform="translate(-15.804 -32.011)" fill="none" stroke="#ff8d4f" stroke-width="29"/>
+    </g>
+    <g id="outline" transform="translate(730.086 759.666)">
+      <path  d="M790.019,856.181v60.626s-1.935,27.733,38.7,29.023,109,0,109-29.023V856.181" transform="translate(-740.355 -776.478)" fill="none" stroke="#000" stroke-width="17"/>
+      <path  d="M794.692,888.872s60.626,23.863,143.826,0" transform="translate(-741.158 -782.081)" fill="none" stroke="#000" stroke-width="16"/>
+    </g>
+  </g>
+</svg>

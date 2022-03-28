@@ -1,12 +1,23 @@
+import Image from 'next/image';
+import style from '@/styles/Footer.module.scss';
+
 function Footer() {
   return (
-    <footer className="footer">
-      <div className="footer-content-1">
-        {/* <img src="./files/icons/png/MageAndCo.jpg" alt="Logo" className="logo"> */}
+    <footer className={style.footer}>
+      <div className={style.footer_content_1}>
+        <Image
+          src="http://localhost:3000/favicon.jpg"
+          alt="logo"
+          className={style.logo}
+          // layout="fill"
+          objectFit="cover"
+          width="60"
+          height="60"
+        />
         <span>fortune web works</span>
       </div>
-      <div className="footer-content-2">
-        <span className="footer-content-2-blog">blog</span>
+      <div className={style.footer_content_2}>
+        <span className={style.footer_content_2_blog}>blog</span>
         <span>twitter</span>
         <span>upwork</span>
       </div>

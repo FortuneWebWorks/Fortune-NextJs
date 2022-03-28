@@ -3,7 +3,7 @@
 .section2 {
   position: relative;
   width: 100%;
-  height: 1000vh;
+  height: 200rem;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -31,6 +31,7 @@
     background-color: $background;
     transition: top 1s ease;
     transform: translateY(50%);
+    overflow: hidden;
 
     .fadein_target {
       opacity: 0;
@@ -241,13 +242,6 @@
       bottom: 27%;
       padding-bottom: 8rem;
     }
-
-    // h2 {
-    //   flex: unset;
-    //   font-size: 3rem;
-    //   font-weight: bold;
-    //   padding: 0 1rem;
-    // }
   }
 
   // Ipad

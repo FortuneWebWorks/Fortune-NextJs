@@ -4,6 +4,7 @@ import { useRef, useEffect } from 'react';
 function BrowserAnimation() {
   const canvas = useRef();
   const c = useRef();
+  const loadingImg = useRef();
   let browsers = [];
   let animate = null;
 
@@ -11,28 +12,44 @@ function BrowserAnimation() {
     c.current = canvas.current.getContext('2d');
 
     canvas.current.width = innerWidth / 1.2;
-    canvas.current.height = innerHeight / 1.2;
+    canvas.current.height = 560;
 
     window.addEventListener('resize', () => {
-      canvas.current.width = innerWidth / 1.4;
-      canvas.current.height = 200;
+      c.current.clearRect(0, 0, canvas.current.width, canvas.current.height);
+      canvas.current.width = innerWidth / 1.2;
+      canvas.current.height = 560;
       // eslint-disable-next-line react-hooks/exhaustive-deps
       browsers = [];
 
       init();
+      fixLoadingPosition();
     });
 
-    const onWheelRole = () => {
-      startAnimation();
+    const canvasInfo = canvas.current.getBoundingClientRect();
+    const onWheelRole = (e) => {
+      if (window.scrollY + canvasInfo.height > canvasInfo.bottom) {
+        startAnimation();
+
+        setTimeout(() => {
+          window.removeEventListener('scroll', onWheelRole);
+        }, 3000);
+      }
     };
 
-    // window.addEventListener('wheel', onWheelRole);
+    window.addEventListener('scroll', onWheelRole);
+
+    // Put loading in middle of left browser
+    const fixLoadingPosition = () => {
+      loadingImg.current.style.left =
+        canvas.current.width / 2 / 2 - loadingImg.current.width / 1.4 + 'px';
+      loadingImg.current.style.top = canvas.current.height / 3 + 'px';
+    };
 
     init();
-    onWheelRole();
+    fixLoadingPosition();
 
     return () => {
-      // window.removeEventListener('wheel', onWheelRole);
+      window.removeEventListener('scroll', onWheelRole);
     };
   }, []);
 
@@ -240,13 +257,13 @@ function BrowserAnimation() {
         this.x + 100,
         this.y + 70,
         this.width - 200,
-        this.height / 4.5,
+        this.height / 6,
         radius,
         'rgba(255, 255, 255, 0.2)'
       );
 
       // Middle group
-      this.cglobalAlpha = this.opac1;
+      this.c.globalAlpha = this.opac1;
       if (this.opac1 === 0 || !this.opac1) {
         this.time1 = setTimeout(() => {
           this.opac1 += 0.02;
@@ -259,7 +276,7 @@ function BrowserAnimation() {
       }
       this.roundRect(
         this.x + 100,
-        this.y + 150,
+        this.y + 140,
         groupWidth,
         s1Height,
         radius,
@@ -267,7 +284,7 @@ function BrowserAnimation() {
       );
 
       //
-      this.cglobalAlpha = this.opac2;
+      this.c.globalAlpha = this.opac2;
       if (this.opac2 === 0 || !this.opac2) {
         this.time2 = setTimeout(() => {
           this.opac2 += 0.02;
@@ -280,7 +297,7 @@ function BrowserAnimation() {
       }
       this.roundRect(
         this.x + 100,
-        this.y + 175,
+        this.y + 158,
         groupWidth,
         s2Height,
         radius,
@@ -288,7 +305,7 @@ function BrowserAnimation() {
       );
 
       //
-      this.cglobalAlpha = this.opac3;
+      this.c.globalAlpha = this.opac3;
       if (this.opac3 === 0 || !this.opac3) {
         this.time3 = setTimeout(() => {
           this.opac3 += 0.02;
@@ -301,7 +318,7 @@ function BrowserAnimation() {
       }
       this.roundRect(
         this.x + 100,
-        this.y + 220,
+        this.y + 191,
         groupWidth,
         s3Height,
         radius,
@@ -309,7 +326,7 @@ function BrowserAnimation() {
       );
 
       //
-      this.cglobalAlpha = this.opac4;
+      this.c.globalAlpha = this.opac4;
       if (this.opac4 === 0 || !this.opac4) {
         this.time4 = setTimeout(() => {
           this.opac4 += 0.02;
@@ -322,7 +339,7 @@ function BrowserAnimation() {
       }
       this.roundRect(
         this.x + 100,
-        this.y + 267,
+        this.y + 211,
         groupWidth,
         s4Height,
         radius,
@@ -330,7 +347,7 @@ function BrowserAnimation() {
       );
 
       // Next to middle group
-      this.cglobalAlpha = this.opac5;
+      this.c.globalAlpha = this.opac5;
       if (this.opac5 === 0 || !this.opac5) {
         this.time5 = setTimeout(() => {
           this.opac5 += 0.02;
@@ -342,31 +359,31 @@ function BrowserAnimation() {
         }, 2100);
       }
       this.roundRect(
-        this.x + (this.width - 200) / 2 + 110,
-        this.y + 165,
-        (this.width - 200) / 2 - 10,
-        127,
+        this.x + (this.width - 200) / 2 + 100,
+        this.y + 140,
+        (this.width - 200) / 2,
+        91,
         radius,
         'rgba(255, 127, 80, 0.4)'
       );
 
       // LastONe
-      this.cglobalAlpha = this.opac6;
+      this.c.globalAlpha = this.opac6;
       if (this.opac6 === 0 || !this.opac6) {
-        this.time6 = setTimeout(() => {
+        setTimeout(() => {
           this.opac6 += 0.02;
 
           if (this.opac6 >= 1) {
             clearTimeout(this.time6);
             this.opac6 = 1;
           }
-        }, 2300);
+        }, 2400);
       }
       this.roundRect(
         this.x + 100,
-        this.y + 300,
+        this.y + 234,
         this.width - 200,
-        100,
+        75,
         radius,
         'rgba(255, 255, 255, 0.2)'
       );
@@ -378,8 +395,8 @@ function BrowserAnimation() {
   }
 
   const init = () => {
-    const width = canvas.current.width / 2 - 20;
-    const height = canvas.current.height - 270;
+    const width = canvas.current.width / 2.2 - 20;
+    const height = canvas.current.height - 250;
     const x = 10;
     const y = 50;
     const radius = 20;
@@ -417,7 +434,27 @@ function BrowserAnimation() {
     }
   }
 
-  return <canvas id="browsers" ref={canvas}></canvas>;
+  return (
+    <div
+      style={{
+        position: 'relative',
+        width: 'fit-content',
+        height: 'fit-content',
+      }}
+    >
+      <canvas id="browsers" ref={canvas}></canvas>
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src="http://localhost:3000/loading.gif"
+        alt=""
+        style={{
+          width: '5rem',
+          position: 'absolute',
+        }}
+        ref={loadingImg}
+      />
+    </div>
+  );
 }
 
 export default BrowserAnimation;

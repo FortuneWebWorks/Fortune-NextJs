@@ -35,9 +35,7 @@ export default function Home() {
         </section>
 
         <section className={section2.section2}>
-          <h2 className={`${section2.text} ${section2.show}`}>
-            {"Don't give a fuck for the websites that do not work!"}
-          </h2>
+          <h2>{"Don't give a fuck for the websites that do not work!"}</h2>
           <h2 className={section2.text}>
             Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aliquam,
             hic.

@@ -107,7 +107,7 @@ function HatAnimation() {
 
       animate();
     } else {
-      for (let i = 0; i < 10; i++) {
+      for (let i = 0; i < 1; i++) {
         const size = Math.random() * 30 + 5;
         const dx = (Math.random() - 0.5) * 2.5;
         const dy = Math.random() * 5 + 1;

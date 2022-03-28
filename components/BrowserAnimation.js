@@ -11,13 +11,23 @@ function BrowserAnimation() {
   useEffect(() => {
     c.current = canvas.current.getContext('2d');
 
-    canvas.current.width = innerWidth / 1.2;
-    canvas.current.height = 560;
+    if (innerWidth > 1030) {
+      canvas.current.width = innerWidth / 1.2;
+      canvas.current.height = 560;
+    } else {
+      canvas.current.width = innerWidth / 1.2;
+      canvas.current.height = 1000;
+    }
 
     window.addEventListener('resize', () => {
       c.current.clearRect(0, 0, canvas.current.width, canvas.current.height);
-      canvas.current.width = innerWidth / 1.2;
-      canvas.current.height = 560;
+      if (innerWidth > 1030) {
+        canvas.current.width = innerWidth / 1.2;
+        canvas.current.height = 560;
+      } else {
+        canvas.current.width = innerWidth / 1.2;
+        canvas.current.height = 1000;
+      }
       // eslint-disable-next-line react-hooks/exhaustive-deps
       browsers = [];
 
@@ -40,9 +50,15 @@ function BrowserAnimation() {
 
     // Put loading in middle of left browser
     const fixLoadingPosition = () => {
-      loadingImg.current.style.left =
-        canvas.current.width / 2 / 2 - loadingImg.current.width / 1.4 + 'px';
-      loadingImg.current.style.top = canvas.current.height / 3 + 'px';
+      if (innerWidth > 1030) {
+        loadingImg.current.style.left =
+          canvas.current.width / 2 / 2 - loadingImg.current.width / 1.4 + 'px';
+        loadingImg.current.style.top = canvas.current.height / 3 + 'px';
+      } else {
+        loadingImg.current.style.left =
+          canvas.current.width / 2 - loadingImg.current.width / 2 + 'px';
+        loadingImg.current.style.top = canvas.current.height / 3.5 + 'px';
+      }
     };
 
     init();
@@ -395,25 +411,47 @@ function BrowserAnimation() {
   }
 
   const init = () => {
-    const width = canvas.current.width / 2.2 - 20;
-    const height = canvas.current.height - 250;
-    const x = 10;
-    const y = 50;
-    const radius = 20;
-    browsers.push(new Browser(x, y, width, height, radius, '#222', false));
-    browsers[0].browser();
+    if (innerWidth < 1030) {
+      const width = canvas.current.width - 200;
+      const height = canvas.current.height / 2.5;
+      const x = 100;
+      const y = 100;
+      const radius = 20;
+      browsers.push(new Browser(x, y, width, height, radius, '#222', false));
+      browsers[0].browser();
 
-    browsers.push(
-      new Browser(
-        canvas.current.width / 2 + 10,
-        y,
-        width,
-        height,
-        radius,
-        '#414666'
-      )
-    );
-    browsers[1].browser();
+      browsers.push(
+        new Browser(
+          x,
+          canvas.current.height / 2 + 80,
+          width,
+          height,
+          radius,
+          '#414666'
+        )
+      );
+      browsers[1].browser();
+    } else {
+      const width = canvas.current.width / 2.2 - 20;
+      const height = canvas.current.height - 250;
+      const x = 10;
+      const y = 50;
+      const radius = 20;
+      browsers.push(new Browser(x, y, width, height, radius, '#222', false));
+      browsers[0].browser();
+
+      browsers.push(
+        new Browser(
+          canvas.current.width / 2 + 10,
+          y,
+          width,
+          height,
+          radius,
+          '#414666'
+        )
+      );
+      browsers[1].browser();
+    }
   };
 
   function startAnimation() {

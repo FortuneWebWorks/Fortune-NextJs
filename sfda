@@ -51,3 +51,46 @@
               </div>
             </div>
           </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+const init = () => {
+  const width = canvas.current.width / 2.2 - 20;
+  const height = canvas.current.height - 250;
+  const x = 10;
+  const y = 50;
+  const radius = 20;
+  browsers.push(new Browser(x, y, width, height, radius, '#222', false));
+  browsers[0].browser();
+
+  browsers.push(
+    new Browser(
+      canvas.current.width / 2 + 10,
+      y,
+      width,
+      height,
+      radius,
+      '#414666'
+    )
+  );
+  browsers[1].browser();
+};

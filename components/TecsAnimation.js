@@ -26,11 +26,12 @@ function TecsAnimation() {
       { path: '/svg/Postgresql.svg' },
     ],
     [
-      { path: '/svg/MySQL.svg' },
-      { path: '/svg/nextjs.svg' },
-      { path: '/svg/Nginx.svg' },
-      { path: '/svg/Postgresql.svg' },
+      { path: '/svg/React.svg' },
+      { path: '/svg/Svelte.svg' },
+      { path: '/svg/Symfony.svg' },
+      { path: '/svg/Typescript.svg' },
     ],
+    [{ path: '/svg/vue.svg' }],
   ];
 
   useEffect(() => {
@@ -43,6 +44,7 @@ function TecsAnimation() {
       canvas.current.width = innerWidth;
       canvas.current.height = innerHeight;
 
+      // eslint-disable-next-line react-hooks/exhaustive-deps
       tecs = [];
       generator();
     });

@@ -247,18 +247,19 @@
 
   // Ipad
   @media (max-width: 768px) {
-    .section2_browsers {
-      bottom: 35%;
-    }
+    // .section2_browsers {
+    //   bottom: 35%;
+    // }
   }
 
   // Iphone 12 pro
-  @media (max-width: 450px) {
+  @media (max-width: 768px) {
     padding: 2rem 2px;
 
     .section2_browsers {
       padding: 0 2rem;
-      bottom: 30%;
+      bottom: -44%;
+      transform: translateY(12%);
     }
 
     h2 {

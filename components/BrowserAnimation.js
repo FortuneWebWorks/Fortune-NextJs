@@ -11,7 +11,10 @@ function BrowserAnimation() {
   useEffect(() => {
     c.current = canvas.current.getContext('2d');
 
-    if (innerWidth > 1030) {
+    if (innerWidth < 720) {
+      canvas.current.width = innerWidth / 1.2;
+      canvas.current.height = 600;
+    } else if (innerWidth > 1030) {
       canvas.current.width = innerWidth / 1.2;
       canvas.current.height = 560;
     } else {
@@ -21,7 +24,10 @@ function BrowserAnimation() {
 
     window.addEventListener('resize', () => {
       c.current.clearRect(0, 0, canvas.current.width, canvas.current.height);
-      if (innerWidth > 1030) {
+      if (innerWidth < 720) {
+        canvas.current.width = innerWidth / 1.2;
+        canvas.current.height = 600;
+      } else if (innerWidth > 1030) {
         canvas.current.width = innerWidth / 1.2;
         canvas.current.height = 560;
       } else {
@@ -50,14 +56,18 @@ function BrowserAnimation() {
 
     // Put loading in middle of left browser
     const fixLoadingPosition = () => {
-      if (innerWidth > 1030) {
+      if (innerWidth < 720) {
         loadingImg.current.style.left =
-          canvas.current.width / 2 / 2 - loadingImg.current.width / 1.4 + 'px';
-        loadingImg.current.style.top = canvas.current.height / 3 + 'px';
-      } else {
+          canvas.current.width / 2 - loadingImg.current.width / 2 + 'px';
+        loadingImg.current.style.top = canvas.current.height / 4.5 + 'px';
+      } else if (innerWidth < 1030) {
         loadingImg.current.style.left =
           canvas.current.width / 2 - loadingImg.current.width / 2 + 'px';
         loadingImg.current.style.top = canvas.current.height / 3.5 + 'px';
+      } else {
+        loadingImg.current.style.left =
+          canvas.current.width / 2 / 2 - loadingImg.current.width / 1.4 + 'px';
+        loadingImg.current.style.top = canvas.current.height / 3 + 'px';
       }
     };
 
@@ -70,7 +80,8 @@ function BrowserAnimation() {
   }, []);
 
   class Browser {
-    constructor(x, y, width, height, radius, bgColor, loading) {
+    constructor(x, y, width, height, radius, bgColor, device) {
+      this.device = device;
       this.c = c.current;
       this.x = x;
       this.y = y;
@@ -83,7 +94,6 @@ function BrowserAnimation() {
         tr: radius,
         bl: radius,
       };
-      this.isLoading = loading || false;
       this.opacity = 0;
       this.loading = this.loading.bind(this);
 
@@ -249,16 +259,98 @@ function BrowserAnimation() {
     loading() {
       // All
       let radius = 7;
-
-      // Middle group
-      let s1Height = 15;
-      let s2Height = 30;
-      let s3Height = 17;
-      let s4Height = 20;
-      let groupWidth = (this.width - 200) / 2 - 10;
+      let x = null;
 
       // Top one
-      this.c.globalAlpha = this.opac;
+      let topOneY = null;
+      let topOneWidth = null;
+      let topOneHeight = null;
+
+      // Middle group
+      let s1Height = null;
+      let s2Height = null;
+      let s3Height = null;
+      let s4Height = null;
+      let groupWidth = null;
+
+      // Next to middle group
+      let NextToGroupX = null;
+      let NextToGroupWidth = null;
+
+      // Last one
+      let lastOneWidth = null;
+      let lastOneHeight = null;
+
+      if (this.device === 'large') {
+        x = this.x + 100;
+
+        // Top one
+        topOneY = this.y + 70;
+        topOneWidth = this.width - 200;
+        topOneHeight = this.height / 6;
+
+        // Middle group
+        s1Height = 15;
+        s2Height = 30;
+        s3Height = 17;
+        s4Height = 20;
+        groupWidth = (this.width - 200) / 2 - 10;
+
+        // Next to middle group
+        NextToGroupX = this.x + (this.width - 200) / 2 + 100;
+        NextToGroupWidth = (this.width - 200) / 2;
+
+        // Last one
+        lastOneWidth = this.width - 200;
+        lastOneHeight = 75;
+      } else if (this.device === 'medium') {
+        x = this.x + 100;
+
+        // Top one
+        topOneY = this.y + 70;
+        topOneWidth = this.width - 200;
+        topOneHeight = this.height / 6;
+
+        // Middle group
+        s1Height = 15;
+        s2Height = 30;
+        s3Height = 17;
+        s4Height = 20;
+        groupWidth = (this.width - 200) / 2 - 10;
+
+        // Next to middle group
+        NextToGroupX = this.x + (this.width - 200) / 2 + 100;
+        NextToGroupWidth = (this.width - 200) / 2;
+
+        // Last one
+        lastOneWidth = this.width - 200;
+        lastOneHeight = 75;
+      } else {
+        x = this.x + 50;
+
+        // Top one
+        topOneY = this.y + 70;
+        topOneWidth = this.width - 100;
+        topOneHeight = this.height / 6;
+
+        // Middle group
+        s1Height = 15;
+        s2Height = 30;
+        s3Height = 17;
+        s4Height = 20;
+        groupWidth = this.width / 3 - 10;
+
+        // Next to middle group
+        NextToGroupX = this.x + (this.width - 200) / 2 + 100;
+        NextToGroupWidth = this.width / 2 - 50;
+
+        // Last one
+        lastOneWidth = this.width - 100;
+        lastOneHeight = 40;
+      }
+
+      // Top one
+      this.c.globalAlpha = 1;
       if (this.opac === 0 || !this.opac) {
         this.time = setTimeout(() => {
           this.opac += 0.02;
@@ -270,10 +362,10 @@ function BrowserAnimation() {
         }, 1000);
       }
       this.roundRect(
-        this.x + 100,
-        this.y + 70,
-        this.width - 200,
-        this.height / 6,
+        x,
+        topOneY,
+        topOneWidth,
+        topOneHeight,
         radius,
         'rgba(255, 255, 255, 0.2)'
       );
@@ -291,7 +383,7 @@ function BrowserAnimation() {
         }, 1200);
       }
       this.roundRect(
-        this.x + 100,
+        x,
         this.y + 140,
         groupWidth,
         s1Height,
@@ -312,7 +404,7 @@ function BrowserAnimation() {
         }, 1600);
       }
       this.roundRect(
-        this.x + 100,
+        x,
         this.y + 158,
         groupWidth,
         s2Height,
@@ -333,7 +425,7 @@ function BrowserAnimation() {
         }, 1800);
       }
       this.roundRect(
-        this.x + 100,
+        x,
         this.y + 191,
         groupWidth,
         s3Height,
@@ -354,7 +446,7 @@ function BrowserAnimation() {
         }, 2000);
       }
       this.roundRect(
-        this.x + 100,
+        x,
         this.y + 211,
         groupWidth,
         s4Height,
@@ -375,9 +467,9 @@ function BrowserAnimation() {
         }, 2100);
       }
       this.roundRect(
-        this.x + (this.width - 200) / 2 + 100,
+        NextToGroupX,
         this.y + 140,
-        (this.width - 200) / 2,
+        NextToGroupWidth,
         91,
         radius,
         'rgba(255, 127, 80, 0.4)'
@@ -396,10 +488,10 @@ function BrowserAnimation() {
         }, 2400);
       }
       this.roundRect(
-        this.x + 100,
+        x,
         this.y + 234,
-        this.width - 200,
-        75,
+        lastOneWidth,
+        lastOneHeight,
         radius,
         'rgba(255, 255, 255, 0.2)'
       );
@@ -411,47 +503,59 @@ function BrowserAnimation() {
   }
 
   const init = () => {
-    if (innerWidth < 1030) {
-      const width = canvas.current.width - 200;
-      const height = canvas.current.height / 2.5;
-      const x = 100;
-      const y = 100;
-      const radius = 20;
-      browsers.push(new Browser(x, y, width, height, radius, '#222', false));
-      browsers[0].browser();
+    let width = null;
+    let height = null;
+    let x = null;
+    let y = null;
+    let containerY = null;
+    let containerX = null;
+    let radius = null;
+    let device = null;
 
-      browsers.push(
-        new Browser(
-          x,
-          canvas.current.height / 2 + 80,
-          width,
-          height,
-          radius,
-          '#414666'
-        )
-      );
-      browsers[1].browser();
+    if (innerWidth < 720) {
+      width = 300;
+      height = 280;
+      x = canvas.current.width / 2 - width / 2;
+      y = 0;
+      radius = 20;
+      containerY = canvas.current.height - height;
+      containerX = x;
+      device = 'small';
+    } else if (innerWidth < 1030) {
+      width = canvas.current.width - 200;
+      height = canvas.current.height / 2.5;
+      x = 100;
+      y = 100;
+      radius = 20;
+      containerY = canvas.current.height / 2 + 80;
+      containerX = x;
+      device = 'medium';
     } else {
-      const width = canvas.current.width / 2.2 - 20;
-      const height = canvas.current.height - 250;
-      const x = 10;
-      const y = 50;
-      const radius = 20;
-      browsers.push(new Browser(x, y, width, height, radius, '#222', false));
-      browsers[0].browser();
-
-      browsers.push(
-        new Browser(
-          canvas.current.width / 2 + 10,
-          y,
-          width,
-          height,
-          radius,
-          '#414666'
-        )
-      );
-      browsers[1].browser();
+      width = canvas.current.width / 2.2 - 20;
+      height = canvas.current.height - 250;
+      x = 10;
+      y = 50;
+      radius = 20;
+      containerY = y;
+      containerX = canvas.current.width / 2 + 10;
+      device = 'large';
     }
+
+    browsers.push(new Browser(x, y, width, height, radius, '#222', device));
+    browsers[0].browser();
+
+    browsers.push(
+      new Browser(
+        containerX,
+        containerY,
+        width,
+        height,
+        radius,
+        '#414666',
+        device
+      )
+    );
+    browsers[1].browser();
   };
 
   function startAnimation() {

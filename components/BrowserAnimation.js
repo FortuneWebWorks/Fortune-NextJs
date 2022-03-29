@@ -271,15 +271,22 @@ function BrowserAnimation() {
       let s2Height = null;
       let s3Height = null;
       let s4Height = null;
+      let s1Y = null;
+      let s2Y = null;
+      let s3Y = null;
+      let s4Y = null;
       let groupWidth = null;
 
       // Next to middle group
       let NextToGroupX = null;
+      let NextToGroupY = null;
       let NextToGroupWidth = null;
+      let NextToGroupHeight = null;
 
       // Last one
       let lastOneWidth = null;
       let lastOneHeight = null;
+      let lastOneY = null;
 
       if (this.device === 'large') {
         x = this.x + 100;
@@ -294,37 +301,51 @@ function BrowserAnimation() {
         s2Height = 30;
         s3Height = 17;
         s4Height = 20;
+        s1Y = this.y + 140;
+        s2Y = this.y + 158;
+        s3Y = this.y + 191;
+        s4Y = this.y + 211;
         groupWidth = (this.width - 200) / 2 - 10;
 
         // Next to middle group
         NextToGroupX = this.x + (this.width - 200) / 2 + 100;
         NextToGroupWidth = (this.width - 200) / 2;
+        NextToGroupY = this.y + 140;
+        NextToGroupHeight = 91;
 
         // Last one
         lastOneWidth = this.width - 200;
         lastOneHeight = 75;
+        lastOneY = this.y + 234;
       } else if (this.device === 'medium') {
         x = this.x + 100;
 
         // Top one
         topOneY = this.y + 70;
         topOneWidth = this.width - 200;
-        topOneHeight = this.height / 6;
+        topOneHeight = this.height / 4;
 
         // Middle group
-        s1Height = 15;
-        s2Height = 30;
-        s3Height = 17;
-        s4Height = 20;
+        s1Height = 25;
+        s2Height = 35;
+        s3Height = 21;
+        s4Height = 30;
+        s1Y = this.y + 140 + 60;
+        s2Y = this.y + 158 + 70;
+        s3Y = this.y + 191 + 75;
+        s4Y = this.y + 211 + 80;
         groupWidth = (this.width - 200) / 2 - 10;
 
         // Next to middle group
         NextToGroupX = this.x + (this.width - 200) / 2 + 100;
         NextToGroupWidth = (this.width - 200) / 2;
+        NextToGroupY = this.y + 140 + 60;
+        NextToGroupHeight = 121;
 
         // Last one
         lastOneWidth = this.width - 200;
-        lastOneHeight = 75;
+        lastOneHeight = 73;
+        lastOneY = this.y + this.height - lastOneHeight;
       } else {
         x = this.x + 50;
 
@@ -338,19 +359,26 @@ function BrowserAnimation() {
         s2Height = 30;
         s3Height = 17;
         s4Height = 20;
+        s1Y = this.y + 140;
+        s2Y = this.y + 158;
+        s3Y = this.y + 191;
+        s4Y = this.y + 211;
         groupWidth = this.width / 3 - 10;
 
         // Next to middle group
         NextToGroupX = this.x + (this.width - 200) / 2 + 100;
         NextToGroupWidth = this.width / 2 - 50;
+        NextToGroupY = this.y + 140;
+        NextToGroupHeight = 91;
 
         // Last one
         lastOneWidth = this.width - 100;
         lastOneHeight = 40;
+        lastOneY = this.y + 234;
       }
 
       // Top one
-      this.c.globalAlpha = 1;
+      this.c.globalAlpha = this.opac;
       if (this.opac === 0 || !this.opac) {
         this.time = setTimeout(() => {
           this.opac += 0.02;
@@ -384,7 +412,7 @@ function BrowserAnimation() {
       }
       this.roundRect(
         x,
-        this.y + 140,
+        s1Y,
         groupWidth,
         s1Height,
         radius,
@@ -405,7 +433,7 @@ function BrowserAnimation() {
       }
       this.roundRect(
         x,
-        this.y + 158,
+        s2Y,
         groupWidth,
         s2Height,
         radius,
@@ -426,7 +454,7 @@ function BrowserAnimation() {
       }
       this.roundRect(
         x,
-        this.y + 191,
+        s3Y,
         groupWidth,
         s3Height,
         radius,
@@ -447,7 +475,7 @@ function BrowserAnimation() {
       }
       this.roundRect(
         x,
-        this.y + 211,
+        s4Y,
         groupWidth,
         s4Height,
         radius,
@@ -468,9 +496,9 @@ function BrowserAnimation() {
       }
       this.roundRect(
         NextToGroupX,
-        this.y + 140,
+        NextToGroupY,
         NextToGroupWidth,
-        91,
+        NextToGroupHeight,
         radius,
         'rgba(255, 127, 80, 0.4)'
       );
@@ -489,7 +517,7 @@ function BrowserAnimation() {
       }
       this.roundRect(
         x,
-        this.y + 234,
+        lastOneY,
         lastOneWidth,
         lastOneHeight,
         radius,

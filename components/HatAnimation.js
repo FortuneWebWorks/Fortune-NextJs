@@ -32,7 +32,6 @@ function HatAnimation() {
     });
 
     window.addEventListener('blur', () => {
-      console.log('Fuck');
       clearInterval(interval);
       // eslint-disable-next-line react-hooks/exhaustive-deps
       stars = [];

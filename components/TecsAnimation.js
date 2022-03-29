@@ -5,6 +5,7 @@ function TecsAnimation() {
   const canvas = useRef();
   const c = useRef();
   let tecs = [];
+  const url = 'http://localhost:3000';
 
   const paths = [
     [
@@ -59,7 +60,7 @@ function TecsAnimation() {
       this.y = y;
       this.dx = dx;
       this.icon = document.createElement('img');
-      this.icon.src = `http://localhost:3000${src}`;
+      this.icon.src = `${url}${src}`;
       this.opacity = 1;
     }
 

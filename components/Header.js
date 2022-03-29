@@ -9,9 +9,8 @@ function Header() {
           <Image
             src="http://localhost:3000/favicon.jpg"
             alt="logo"
-            layout="fill"
             objectFit="cover"
-            width="100%"
+            width="100"
             height="100"
           />
         </div>

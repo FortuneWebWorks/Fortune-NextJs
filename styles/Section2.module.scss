@@ -240,8 +240,9 @@
       align-items: center;
       gap: 4rem;
       padding: 0 8rem;
-      bottom: 35%;
-      padding-bottom: 8rem;
+      bottom: 0;
+      transform: translateY(12%) scaleY(0.9);
+      // padding-bottom: 8rem;
     }
   }
 
@@ -258,7 +259,7 @@
 
     .section2_browsers {
       padding: 0 2rem;
-      bottom: -44%;
+      bottom: -23rem;
       transform: translateY(12%);
     }
 

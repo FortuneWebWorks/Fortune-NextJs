@@ -106,7 +106,6 @@ function TecsAnimation() {
         );
       });
       tecs[index].generator();
-      console.log(tecs);
     });
   };
 

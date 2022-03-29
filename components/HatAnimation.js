@@ -11,6 +11,7 @@ function HatAnimation() {
   let interval = null;
   let animation = null;
   let stars = [];
+  const limit = 70;
 
   useEffect(() => {
     containerInfo.current = container.current.getBoundingClientRect();
@@ -63,7 +64,6 @@ function HatAnimation() {
         c.current.fillText('✨', this.x, this.y);
       } else {
         let img = document.getElementById('sparks');
-        // console.log(img);
         c.current.drawImage(img, this.x, this.y, this.size, this.size);
       }
       c.current.closePath();
@@ -75,7 +75,7 @@ function HatAnimation() {
       if (this.opacity >= 0) {
         this.opacity -= this.fadeTime;
       } else {
-        delete stars[index];
+        stars = stars.filter((item) => item !== this);
       }
 
       this.createStar(index);
@@ -107,7 +107,7 @@ function HatAnimation() {
 
       animate();
     } else {
-      for (let i = 0; i < 1; i++) {
+      for (let i = 0; i < 50; i++) {
         const size = Math.random() * 30 + 5;
         const dx = (Math.random() - 0.5) * 2.5;
         const dy = Math.random() * 5 + 1;
@@ -136,10 +136,12 @@ function HatAnimation() {
 
   const onClick = (e) => {
     if (e.target.classList.contains('hat')) {
-      c.current.clearRect(0, 0, canvas.current.width, canvas.current.height);
-      cancelAnimationFrame(animation);
+      if (stars.length < limit) {
+        c.current.clearRect(0, 0, canvas.current.width, canvas.current.height);
+        cancelAnimationFrame(animation);
 
-      startBuilding();
+        startBuilding();
+      }
     }
   };
 

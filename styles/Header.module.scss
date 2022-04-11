@@ -30,7 +30,6 @@
     width: 3.3rem;
     height: 3.3rem;
     border-radius: 18px;
-    overflow: hidden;
   }
 
   .head_content_1 span {
@@ -45,6 +44,7 @@
     font-size: 1.3rem;
     font-weight: bold;
     line-height: 100%;
+    cursor: pointer;
   }
 
   // Ipad pro
@@ -71,6 +71,7 @@
       width: 5rem;
       height: 5rem;
       border-radius: 22px;
+      bottom: -40%;
     }
   }
 
@@ -82,6 +83,7 @@
       width: 4rem;
       height: 4rem;
       border-radius: 22px;
+      bottom: -20%;
     }
 
     .head_content_2 span {
@@ -111,6 +113,14 @@
     button {
       font-size: 1rem;
     }
+
+    .logo {
+      position: relative;
+      width: 3.3rem;
+      height: 3.3rem;
+      border-radius: 18px;
+      bottom: 0;
+    }
   }
 
   // Iphone 12 pro
@@ -137,7 +147,6 @@
       width: 3rem;
       height: 3rem;
       border-radius: 26px;
-      overflow: hidden;
     }
   }
 }

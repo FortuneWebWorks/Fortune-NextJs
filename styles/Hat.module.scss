@@ -1,0 +1,54 @@
+.container {
+  width: 100px;
+  height: 100px;
+  position: relative;
+  top: -100%;
+  left: -50%;
+
+  canvas {
+    position: absolute;
+    bottom: 25%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+  }
+
+  .hat1,
+  .hat2,
+  .hat3 {
+    width: 7rem;
+    height: 2.2rem;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+
+    & * {
+      -webkit-user-drag: none;
+      user-select: none;
+      -moz-user-select: none;
+      -webkit-user-select: none;
+      -ms-user-select: none;
+    }
+  }
+
+  .hat1 {
+    width: 5rem;
+    bottom: 28%;
+    left: 49%;
+    z-index: 1;
+  }
+
+  .hat3 {
+    bottom: 0;
+    z-index: 3;
+  }
+
+  .hat2 {
+    width: 3.2rem;
+    height: 3.6rem;
+    bottom: 12%;
+    z-index: 4;
+  }
+}

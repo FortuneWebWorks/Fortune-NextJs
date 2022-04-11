@@ -1,7 +1,8 @@
 /** @type {HTMLCanvasElement} */
 import { useRef, useEffect } from 'react';
 import Image from 'next/image';
-import section1 from '@/styles/Section1.module.scss';
+import style from '@/styles/Hat.module.scss';
+import Router from 'next/router';
 
 function HatAnimation() {
   const canvas = useRef();
@@ -12,6 +13,13 @@ function HatAnimation() {
   let animation = null;
   let stars = [];
   const limit = 70;
+
+  Router.events.on('routeChangeStart', () => {
+    stars = [];
+    cancelAnimationFrame(animation);
+    clearInterval(interval);
+    return;
+  });
 
   useEffect(() => {
     containerInfo.current = container.current.getBoundingClientRect();
@@ -40,6 +48,9 @@ function HatAnimation() {
     return () => {
       // eslint-disable-next-line react-hooks/exhaustive-deps
       stars = [];
+
+      clearInterval(interval);
+      cancelAnimationFrame(animation);
     };
   }, []);
 
@@ -84,14 +95,14 @@ function HatAnimation() {
   const startBuilding = (mode) => {
     if (mode === 'auto') {
       for (let i = 0; i < 3; i++) {
-        const size = Math.random() * 30 + 5;
+        const size = Math.random() * 20 + 5;
         const dx = (Math.random() - 0.5) * 0.5;
         const dy = Math.random() * 0.5;
         const min = 0.01,
           max = 0.001,
           fadeTime = Math.random() * (max - min) + min;
-        const x = canvas.current.width / 2 - 20;
-        const y = canvas.current.height - 80;
+        const x = canvas.current.width / 2 - 10;
+        const y = canvas.current.height;
         stars.push(new Star(x, y, dx, dy, size, fadeTime.toFixed(3), i));
       }
 
@@ -107,7 +118,7 @@ function HatAnimation() {
       animate();
     } else {
       for (let i = 0; i < 50; i++) {
-        const size = Math.random() * 30 + 5;
+        const size = Math.random() * 20 + 5;
         const dx = (Math.random() - 0.5) * 2.5;
         const dy = Math.random() * 5 + 1;
 
@@ -115,8 +126,8 @@ function HatAnimation() {
           max = 0.02,
           fadeTime = Math.random() * (max - min) + min;
 
-        const x = canvas.current.width / 2 - 20;
-        const y = canvas.current.height - 80;
+        const x = canvas.current.width / 2 - 10;
+        const y = canvas.current.height;
         stars.push(new Star(x, y, dx, dy, size, fadeTime.toFixed(3), i));
       }
 
@@ -145,12 +156,8 @@ function HatAnimation() {
   };
 
   return (
-    <div
-      className={`${section1.section1_icon} ${section1.container}`}
-      ref={container}
-      onClick={onClick}
-    >
-      <div className={`${section1.hat1} ${section1.hat}`}>
+    <div className={style.container} ref={container} onClick={onClick}>
+      <div className={style.hat1}>
         <Image
           src={'http://localhost:3000/hat/chapue.svg'}
           layout="fill"
@@ -158,7 +165,7 @@ function HatAnimation() {
           className="hat"
         />
       </div>
-      <div className={`${section1.hat2} ${section1.hat}`}>
+      <div className={style.hat2}>
         <Image
           src={'http://localhost:3000/hat/top-layer.svg'}
           layout="fill"
@@ -166,7 +173,7 @@ function HatAnimation() {
           className="hat"
         />
       </div>
-      <div className={`${section1.hat3} ${section1.hat}`}>
+      <div className={style.hat3}>
         <Image
           src={'http://localhost:3000/hat/hat.svg'}
           layout="fill"

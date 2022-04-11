@@ -1,9 +1,11 @@
 import { useEffect, useRef } from 'react';
 import style from '@/styles/Section3.module.scss';
+import Router from 'next/router';
 
 function TecsAnimation() {
   const canvas = useRef();
   const c = useRef();
+  const animation = useRef();
   let tecs = [];
   const url = 'http://localhost:3000';
 
@@ -35,6 +37,10 @@ function TecsAnimation() {
     [{ path: '/svg/vue.svg' }],
   ];
 
+  Router.events.on('routeChangeStart', () => {
+    cancelAnimationFrame(animation.current);
+  });
+
   useEffect(() => {
     c.current = canvas.current.getContext('2d');
 
@@ -52,6 +58,11 @@ function TecsAnimation() {
 
     generator();
     animate();
+
+    return () => {
+      cancelAnimationFrame(animation.current);
+      console.log(animation.current);
+    };
   });
 
   class Tec {
@@ -111,7 +122,7 @@ function TecsAnimation() {
   };
 
   const animate = () => {
-    requestAnimationFrame(animate);
+    animation.current = requestAnimationFrame(animate);
 
     c.current.clearRect(0, 0, canvas.current.width, canvas.current.height);
     for (let i = 0; i < tecs.length; i++) {

@@ -1,18 +1,12 @@
-import { useRef, useEffect } from 'react';
-import Image from 'next/image';
 import Layout from '@/components/Layout';
 import section1 from '@/styles/Section1.module.scss';
 import section2 from '@/styles/Section2.module.scss';
-import section3 from '@/styles/Section3.module.scss';
 import section4 from '@/styles/Section4.module.scss';
 import HatAnimation from '@/components/HatAnimation';
 import BrowserAnimation from '@/components/BrowserAnimation';
 import TecsAnimation from '@/components/TecsAnimation';
 
 export default function Home() {
-  const container = useRef();
-  const canvas = useRef();
-
   return (
     <Layout>
       <>
@@ -24,14 +18,14 @@ export default function Home() {
             </h1>
             <div>
               <button className={section1.hide_us}>
-                🪄 Hire us to work the magic.
+                🪄 Hire us to work the magic
               </button>
               <button className={section1.hide_us}>
-                Receive a free consulting session today.
+                Receive a free consulting session today
               </button>
             </div>
           </div>
-          <HatAnimation />
+          {/* <HatAnimation /> */}
 
           <div className={section1.section1_buttons}>
             <button className={section1.hide_us}>

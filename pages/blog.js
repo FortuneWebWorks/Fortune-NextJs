@@ -1,9 +1,14 @@
 import Image from 'next/image';
+import Router from 'next/router';
 import styles from '@/styles/Blog.module.scss';
 import headStyle from '@/styles/Header.module.scss';
 import footerStyle from '@/styles/Footer.module.scss';
 
 function blog() {
+  const imageClick = () => {
+    Router.push('/');
+  };
+
   return (
     <section className={styles.blog_body}>
       <header className={headStyle.header}>
@@ -15,6 +20,7 @@ function blog() {
               objectFit="cover"
               width="100"
               height="100"
+              onClick={imageClick}
             />
           </div>
         </div>

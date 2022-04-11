@@ -1,8 +1,13 @@
 import Image from 'next/image';
+import Router from 'next/router';
 import styles from '@/styles/Form.module.scss';
 import headStyle from '@/styles/Header.module.scss';
 
 function form() {
+  const imageClick = () => {
+    Router.push('/');
+  };
+
   return (
     <>
       <header
@@ -17,6 +22,7 @@ function form() {
               objectFit="cover"
               width="100"
               height="100"
+              onClick={imageClick}
             />
           </div>
         </div>

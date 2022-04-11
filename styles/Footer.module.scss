@@ -27,8 +27,11 @@
   }
 
   .logo {
-    height: 100%;
-    border-radius: 16px;
+    position: relative;
+    width: 3.3rem;
+    height: 3.3rem;
+    border-radius: 18px;
+    overflow: hidden;
   }
 
   .footer_content_1 span {

@@ -18,8 +18,8 @@ function Footer() {
       </div>
       <div className={style.footer_content_2}>
         <span className={style.footer_content_2_blog}>blog</span>
-        <span>twitter</span>
-        <span>upwork</span>
+        <span>Analysis</span>
+        <span>Contact</span>
       </div>
     </footer>
   );

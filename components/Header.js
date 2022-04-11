@@ -17,9 +17,8 @@ function Header() {
         <span>fortune web works</span>
       </div>
       <div className={styles.head_content_2}>
-        <span>blog</span>
-        <span>twitter</span>
-        <span>upwork</span>
+        <span>Analysis</span>
+        <span>Contact</span>
       </div>
     </header>
   );

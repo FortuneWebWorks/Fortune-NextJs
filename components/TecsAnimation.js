@@ -123,8 +123,7 @@ function TecsAnimation() {
     <section className={style.section3}>
       <canvas id="tecs" ref={canvas}></canvas>
       <div className={style.section3_text}>
-        <p>go to mooonnnnn &#128640;</p>
-        <p>WITH THE MODERN WEB</p>
+        <p>It isn’t sorcery. It’s good web design.</p>
       </div>
     </section>
   );

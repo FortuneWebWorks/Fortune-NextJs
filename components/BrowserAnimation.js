@@ -14,12 +14,14 @@ function BrowserAnimation() {
     if (innerWidth < 720) {
       canvas.current.width = innerWidth / 1.2;
       canvas.current.height = 600;
-    } else if (innerWidth > 1030) {
-      canvas.current.width = innerWidth / 1.2;
-      canvas.current.height = 560;
+    } else if (innerWidth < 1030) {
+      canvas.current.width = innerWidth;
+      canvas.current.height = 1000;
+    } else if (innerWidth > 1400) {
+      canvas.current.width = 1200;
     } else {
       canvas.current.width = innerWidth / 1.2;
-      canvas.current.height = 1000;
+      canvas.current.height = 560;
     }
 
     window.addEventListener('resize', () => {
@@ -27,12 +29,14 @@ function BrowserAnimation() {
       if (innerWidth < 720) {
         canvas.current.width = innerWidth / 1.2;
         canvas.current.height = 600;
-      } else if (innerWidth > 1030) {
-        canvas.current.width = innerWidth / 1.2;
-        canvas.current.height = 560;
-      } else {
+      } else if (innerWidth < 1030) {
         canvas.current.width = innerWidth / 1.2;
         canvas.current.height = 1000;
+      } else if (innerWidth > 1400) {
+        canvas.current.width = 1200;
+      } else {
+        canvas.current.width = innerWidth / 1.2;
+        canvas.current.height = 560;
       }
       // eslint-disable-next-line react-hooks/exhaustive-deps
       browsers = [];

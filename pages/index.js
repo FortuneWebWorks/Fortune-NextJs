@@ -19,43 +19,38 @@ export default function Home() {
         <section className={section1.section1}>
           <div className={section1.section1_text}>
             <h1>
-              Rapidly build modern websites without ever leaving
-              <span>your HTML</span>. EVER LEAVING YOUR HTML
+              Cast your website into
+              <span> reality.</span>
             </h1>
             <div>
-              <button className={section1.hide_us}>HIRE US &#127881;</button>
-              <button className={section1.hide_us}>GET A FREE ANALSYS</button>
+              <button className={section1.hide_us}>
+                🪄 Hire us to work the magic.
+              </button>
+              <button className={section1.hide_us}>
+                Receive a free consulting session today.
+              </button>
             </div>
           </div>
           <HatAnimation />
 
           <div className={section1.section1_buttons}>
-            <button className={section1.hide_us}>HIRE US &#127881;</button>
-            <button className={section1.hide_us}>GET A FREE ANALSYS</button>
+            <button className={section1.hide_us}>
+              🪄 Hire us to work the magic.
+            </button>
+            <button className={section1.hide_us}>
+              Receive a free consulting session today.
+            </button>
           </div>
         </section>
 
         <section className={section2.section2}>
-          <h2>{"Don't give a fuck for the websites that do not work!"}</h2>
-          <h2 className={section2.text}>
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aliquam,
-            hic.
-          </h2>
-          <h2 className={section2.text}>Lorem ipsum dolor sit amet.</h2>
-          <h2 className={section2.text}>
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+          <h2>
+            Delivery of fast and reliable services, like pulling a rabbit out of
+            a hat.
           </h2>
           <h2 className={section2.text}>
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Soluta
-            aliquid ut quos ea similique odio deserunt nobis praesentium quo
-            dignissimos facilis, autem, dolores, natus tenetur nesciunt nisi
-            distinctio! Accusamus, cupiditate? Eveniet expedita officiis commodi
-            eos quo! Consequuntur quis cumque nulla, voluptate alias dolore
-            delectus fugiat aliquid quisquam rerum culpa perspiciatis sapiente
-            iusto consectetur quaerat sequi dolorem, assumenda itaque placeat et
-            quasi vel numquam voluptas! Consequuntur hic enim repudiandae. Sit
-            minus at neque quas tempore earum alias assumenda temporibus saepe
-            id.
+            Say goodbye to bloated and overly complicated solutions— web design
+            shouldn’t be a riddle.
           </h2>
           <div className={section2.section2_browsers} id="section2-scroll">
             <BrowserAnimation />
@@ -63,7 +58,7 @@ export default function Home() {
         </section>
 
         <section className={section4.section4}>
-          <h3>SEE WHAT OTHER PEOPLE THINK:</h3>
+          <h3>Applause for Fortune:</h3>
           <div className={section4.section4_cards}>
             <div>
               <span>they are the best fucking people in the universe.</span>

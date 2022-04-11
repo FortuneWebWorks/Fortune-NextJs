@@ -39,5 +39,12 @@
 
   // Iphone 12 pro
   @media (max-width: 450px) {
+    .section3_text {
+      font-size: 1.8rem;
+
+      p {
+        letter-spacing: 0;
+      }
+    }
   }
 }

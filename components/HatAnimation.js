@@ -24,7 +24,7 @@ function HatAnimation() {
   useEffect(() => {
     containerInfo.current = container.current.getBoundingClientRect();
     canvas.current.width = containerInfo.current.width;
-    canvas.current.height = containerInfo.current.height;
+    canvas.current.height = containerInfo.current.height + 10;
     c.current = canvas.current.getContext('2d');
 
     let interval = setInterval(() => {

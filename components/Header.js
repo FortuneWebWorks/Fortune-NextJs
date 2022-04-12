@@ -19,10 +19,13 @@ function Header() {
       </div>
       <div className={styles.head_content_2}>
         <Link href="/blog" passHref>
-          <span>Analysis</span>
+          <span>blog</span>
+        </Link>
+        <Link href="/" passHref>
+          <span>twitter</span>
         </Link>
         <Link href="/form" passHref>
-          <span>Contact</span>
+          <span>upwork</span>
         </Link>
       </div>
     </header>

@@ -40,9 +40,11 @@ function HatAnimation() {
     });
 
     window.addEventListener('blur', () => {
-      clearInterval(interval);
       // eslint-disable-next-line react-hooks/exhaustive-deps
       stars = [];
+
+      clearInterval(interval);
+      cancelAnimationFrame(animation);
     });
 
     return () => {

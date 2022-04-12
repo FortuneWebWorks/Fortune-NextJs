@@ -33,8 +33,8 @@ function TecsAnimation() {
       { path: '/svg/Svelte.svg' },
       { path: '/svg/Symfony.svg' },
       { path: '/svg/Typescript.svg' },
+      { path: '/svg/vue.svg' },
     ],
-    [{ path: '/svg/vue.svg' }],
   ];
 
   Router.events.on('routeChangeStart', () => {

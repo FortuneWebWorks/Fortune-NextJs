@@ -2,6 +2,7 @@ import Image from 'next/image';
 import Router from 'next/router';
 import styles from '@/styles/Form.module.scss';
 import headStyle from '@/styles/Header.module.scss';
+import Layout from '@/components/Layout';
 
 function form() {
   const imageClick = () => {
@@ -9,8 +10,8 @@ function form() {
   };
 
   return (
-    <>
-      <header
+    <Layout>
+      {/* <header
         className={headStyle.header}
         style={{ justifyContent: 'center', height: '5rem', padding: '16px' }}
       >
@@ -26,7 +27,7 @@ function form() {
             />
           </div>
         </div>
-      </header>
+      </header> */}
 
       <main>
         <div className={styles.form}>
@@ -68,7 +69,7 @@ function form() {
           </form>
         </div>
       </main>
-    </>
+    </Layout>
   );
 }
 

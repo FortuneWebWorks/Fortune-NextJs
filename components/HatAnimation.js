@@ -32,12 +32,13 @@ function HatAnimation() {
       startBuilding('auto');
     }, 1000);
 
-    window.addEventListener('focus', () => {
-      interval = setInterval(() => {
-        cancelAnimationFrame(animation);
-        startBuilding('auto');
-      }, 1000);
-    });
+    // window.addEventListener('focus', () => {
+    //   interval = setInterval(() => {
+    //     cancelAnimationFrame(animation);
+    //     startBuilding('auto');
+    //     console.log('object');
+    //   }, 1000);
+    // });
 
     window.addEventListener('blur', () => {
       // eslint-disable-next-line react-hooks/exhaustive-deps

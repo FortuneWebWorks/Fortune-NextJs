@@ -1,12 +1,39 @@
 import Image from 'next/image';
+import { useRef } from 'react';
 import Router from 'next/router';
 import styles from '@/styles/Form.module.scss';
 import headStyle from '@/styles/Header.module.scss';
 import Layout from '@/components/Layout';
 
-function form() {
+function Form() {
+  const form = useRef();
+
   const imageClick = () => {
     Router.push('/');
+  };
+
+  const onSubmit = (e) => {
+    e.preventDefault();
+    const name = form.current.name.value;
+    const email = form.current.email.value;
+    const website = form.current.website.value;
+    const discuss = form.current.discuss.value;
+    const data = {
+      name,
+      email,
+      website,
+      discuss,
+    };
+
+    fetch(
+      `https://api.telegram.org/bot${
+        process.env.TELEGRAM_BOT_TOKEN
+      }/sendMessage?chat_id=${
+        process.env.TELEGRAM_CHAT_ID
+      }&text=${JSON.stringify(data)}`
+    );
+
+    console.log(name, email, website, discuss);
   };
 
   return (
@@ -31,7 +58,7 @@ function form() {
 
       <main>
         <div className={styles.form}>
-          <form id="form">
+          <form id="form" onSubmit={onSubmit} ref={form}>
             <h2>
               PLEASE INFORM US OF YOUR WEBSITE AND WE WILL SEND YOU THE
               ANALYSIS:
@@ -40,18 +67,18 @@ function form() {
             <div className={styles.info}>
               <div>
                 <label htmlFor="name">your name:</label>
-                <input type="text" name="name" id="name" required />
+                <input type="text" name="name" id="name" />
               </div>
 
               <div>
                 <label htmlFor="email">your email:</label>
-                <input type="email" name="email" id="email" required />
+                <input type="email" name="email" id="email" />
               </div>
             </div>
 
             <div>
               <label htmlFor="website">your website address:</label>
-              <input type="url" name="website" id="website" required />
+              <input type="url" name="website" id="website" />
             </div>
 
             <div>
@@ -73,4 +100,4 @@ function form() {
   );
 }
 
-export default form;
+export default Form;

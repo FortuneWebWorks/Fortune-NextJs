@@ -14,6 +14,11 @@ const nextConfig = {
 
     return config;
   },
+
+  env: {
+    TELEGRAM_BOT_TOKEN: '5186582196:AAF6dIzidTOtJRfwhaAu-hqwIkgdTsbA1zY',
+    TELEGRAM_CHAT_ID: '761026981',
+  },
 };
 
 module.exports = nextConfig;

@@ -14,6 +14,7 @@ function Form() {
 
   const onSubmit = (e) => {
     e.preventDefault();
+
     const name = form.current.name.value;
     const email = form.current.email.value;
     const website = form.current.website.value;
@@ -24,17 +25,37 @@ function Form() {
       website,
       discuss,
     };
+    let validation = true;
 
-    fetch(
-      `https://api.telegram.org/bot${
-        process.env.TELEGRAM_BOT_TOKEN
-      }/sendMessage?chat_id=${
-        process.env.TELEGRAM_CHAT_ID
-      }&text=${JSON.stringify(data)}`
-    );
+    if (!data.name || data.name === '') {
+      form.current.name.classList.add(styles.error);
+      validation = false;
+    }
+    if (!data.email || data.email === '') {
+      form.current.email.classList.add(styles.error);
+      validation = false;
+    }
+    if (!data.website || data.website === '') {
+      form.current.website.classList.add(styles.error);
+      validation = false;
+    }
+    if (!data.discuss || data.discuss === '') {
+      form.current.discuss.classList.add(styles.error);
+      validation = false;
+    }
 
-    console.log(name, email, website, discuss);
+    if (validation) {
+      fetch(
+        `https://api.telegram.org/bot${
+          process.env.TELEGRAM_BOT_TOKEN
+        }/sendMessage?chat_id=${
+          process.env.TELEGRAM_CHAT_ID
+        }&text=${JSON.stringify(data)}`
+      );
+    }
   };
+
+  const onChange = (e) => {};
 
   return (
     <Layout>
@@ -58,7 +79,7 @@ function Form() {
 
       <main>
         <div className={styles.form}>
-          <form id="form" onSubmit={onSubmit} ref={form}>
+          <form id="form" onSubmit={onSubmit} ref={form} onChange={onChange}>
             <h2>
               PLEASE INFORM US OF YOUR WEBSITE AND WE WILL SEND YOU THE
               ANALYSIS:

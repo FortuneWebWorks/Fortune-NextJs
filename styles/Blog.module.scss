@@ -1,5 +1,10 @@
 @use './Variables' as *;
 
+@font-face {
+  font-family: Founders_Grotesk;
+  src: url('../fonts/Founders_Grotesk/FoundersGrotesk-Regular.otf');
+}
+
 .blog_body {
   display: flex;
   flex-direction: column;
@@ -50,7 +55,7 @@
 
   .blog_post_comment {
     font-size: 1.3rem;
-    font-family: Cubano;
+    font-family: Founders_Grotesk;
   }
 
   .point_circle {

@@ -34,12 +34,16 @@ export default function Home() {
           <Youtube />
 
           <div className={section1.section1_buttons}>
-            <button className={section1.hide_us}>
-              🪄 Hire us to work the magic.
-            </button>
-            <button className={section1.hide_us}>
-              Receive a free consulting session today.
-            </button>
+            <Link href="/form" passHref>
+              <button className={section1.hide_us}>
+                🪄 Hire us to work the magic
+              </button>
+            </Link>
+            <Link href="/form" passHref>
+              <button className={section1.hide_us}>
+                Receive a free consulting session today
+              </button>
+            </Link>
           </div>
         </section>
 

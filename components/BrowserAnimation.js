@@ -7,6 +7,7 @@ function BrowserAnimation() {
   const loadingImg = useRef();
   let browsers = [];
   let animate = null;
+  console.log(canvas.current);
 
   useEffect(() => {
     c.current = canvas.current.getContext('2d');

@@ -45,6 +45,7 @@ function Form() {
     }
 
     if (validation) {
+      console.log(process.env.TELEGRAM_CHAT_ID);
       fetch(
         `https://api.telegram.org/bot${
           process.env.TELEGRAM_BOT_TOKEN

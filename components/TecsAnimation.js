@@ -141,7 +141,10 @@ function TecsAnimation() {
     <section className={style.section3}>
       <canvas id="tecs" ref={canvas}></canvas>
       <div className={style.section3_text}>
-        <p id="text">It isn’t sorcery. It’s good web design.</p>
+        <p id="text">
+          It isn’t <span style={{ color: 'coral' }}>sorcery</span>.<br /> It’s
+          good web design.
+        </p>
       </div>
     </section>
   );

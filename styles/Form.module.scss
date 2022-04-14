@@ -1,6 +1,12 @@
 @use './Variables' as *;
 
+@font-face {
+  font-family: Cubano;
+  src: url('../fonts/Cubano-Font-Family/Cubano.ttf');
+}
+
 .form {
+  position: relative;
   width: 100%;
   height: 100%;
   min-height: 36rem;
@@ -28,6 +34,9 @@
     border-radius: 7px;
     padding: 2rem;
     background-color: $gray2nd;
+    transform: scale(1);
+    transition: all 0.2s ease-in;
+    z-index: 3;
   }
 
   form div {
@@ -123,5 +132,40 @@
   .error {
     background-color: rgb(0, 106, 255);
     color: #fff;
+  }
+
+  .final_message {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: all 0.3s 0.5s ease-in;
+
+    p {
+      font-family: Cubano;
+      text-align: center;
+      font-size: 3rem;
+      transform: scale(1);
+      transition: all 0.3s 0.5s ease-in;
+    }
+  }
+}
+
+.form.done {
+  form {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+  .final_message {
+    opacity: 1;
+
+    p {
+      transform: scale(1.1);
+    }
   }
 }

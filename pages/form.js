@@ -1,16 +1,9 @@
-import Image from 'next/image';
 import { useRef } from 'react';
-import Router from 'next/router';
 import styles from '@/styles/Form.module.scss';
-import headStyle from '@/styles/Header.module.scss';
 import Layout from '@/components/Layout';
 
 function Form() {
   const form = useRef();
-
-  const imageClick = () => {
-    Router.push('/');
-  };
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -49,9 +42,11 @@ function Form() {
     `);
 
     if (validation) {
-      fetch(
-        `https://api.telegram.org/bot${process.env.TELEGRAM_BOT_TOKEN}/sendMessage?chat_id=761026981&text=${sendigFormat}&parse_mode=HTML`
-      );
+      // fetch(
+      //   `https://api.telegram.org/bot${process.env.TELEGRAM_BOT_TOKEN}/sendMessage?chat_id=511697401&text=${sendigFormat}&parse_mode=HTML`
+      // );
+
+      document.getElementById('form').classList.add(styles.done);
     }
   };
 
@@ -59,52 +54,31 @@ function Form() {
 
   return (
     <Layout>
-      {/* <header
-        className={headStyle.header}
-        style={{ justifyContent: 'center', height: '5rem', padding: '16px' }}
-      >
-        <div className={headStyle.head_content_1}>
-          <div className={headStyle.logo}>
-            <Image
-              src="http://localhost:3000/favicon.jpg"
-              alt="logo"
-              objectFit="cover"
-              width="100"
-              height="100"
-              onClick={imageClick}
-            />
-          </div>
-        </div>
-      </header> */}
-
       <main>
-        <div className={styles.form}>
+        <div className={styles.form} id="form">
           <form id="form" onSubmit={onSubmit} ref={form} onChange={onChange}>
-            <h2>
-              PLEASE INFORM US OF YOUR WEBSITE AND WE WILL SEND YOU THE
-              ANALYSIS:
-            </h2>
+            <h2>Request a free consultation session and website analysis</h2>
 
             <div className={styles.info}>
               <div>
-                <label htmlFor="name">your name:</label>
+                <label htmlFor="name">name:</label>
                 <input type="text" name="name" id="name" />
               </div>
 
               <div>
-                <label htmlFor="email">your email:</label>
+                <label htmlFor="email">email:</label>
                 <input type="email" name="email" id="email" />
               </div>
             </div>
 
             <div>
-              <label htmlFor="website">your website address:</label>
+              <label htmlFor="website">website url/link for analysis:</label>
               <input type="url" name="website" id="website" />
             </div>
 
             <div>
               <label htmlFor="discuss">
-                anything that you want to discuss:
+                anything else you wish to discuss and comments:
               </label>
               <textarea
                 id="discuss"
@@ -115,6 +89,13 @@ function Form() {
 
             <button className={styles.submit}>submit ✉️</button>
           </form>
+
+          <div className={styles.final_message}>
+            <p>
+              your request has been submitted 🎉 <br /> we&apos;ll contact you
+              as soon as possible.
+            </p>
+          </div>
         </div>
       </main>
     </Layout>

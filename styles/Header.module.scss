@@ -1,3 +1,8 @@
+@font-face {
+  font-family: Founders_Grotesk;
+  src: url('../fonts/Founders_Grotesk/FoundersGrotesk-Regular.otf');
+}
+
 .header {
   width: 100%;
   height: 9.5rem;
@@ -6,10 +11,10 @@
   align-items: center;
   padding: 3rem;
   padding-left: 2rem;
-  font-family: Founders_Grotesk;
+  font-family: Founders_Grotesk !important;
 
   & * {
-    font-family: inherit !important;
+    font-family: Founders_Grotesk;
   }
 
   .head_content_1,

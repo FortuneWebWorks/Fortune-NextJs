@@ -1,5 +1,9 @@
 @use './Variables' as *;
-@use './Fonts.scss' as *;
+
+@font-face {
+  font-family: Cubano;
+  src: url('../fonts/Cubano-Font-Family/Cubano.ttf');
+}
 
 .section1 {
   width: 100%;

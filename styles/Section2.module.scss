@@ -1,5 +1,10 @@
 @use './Variables' as *;
 
+@font-face {
+  font-family: Cubano;
+  src: url('../fonts/Cubano-Font-Family/Cubano.ttf');
+}
+
 .section2 {
   position: relative;
   width: 100%;
@@ -52,6 +57,7 @@
     flex: 1;
     font-size: 3rem;
     text-align: center;
+    transform: translateY(7rem);
   }
 
   .section2_icnon {

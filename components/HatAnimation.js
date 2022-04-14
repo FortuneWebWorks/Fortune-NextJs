@@ -1,10 +1,12 @@
 /** @type {HTMLCanvasElement} */
 import { useRef, useEffect } from 'react';
+import Link from 'next/link';
 import Image from 'next/image';
 import style from '@/styles/Hat.module.scss';
-import Router from 'next/router';
+import Router, { useRouter } from 'next/router';
 
 function HatAnimation() {
+  const router = useRouter();
   const canvas = useRef();
   const container = useRef();
   let containerInfo = useRef();
@@ -23,8 +25,8 @@ function HatAnimation() {
 
   useEffect(() => {
     containerInfo.current = container.current.getBoundingClientRect();
-    canvas.current.width = containerInfo.current.width;
-    canvas.current.height = containerInfo.current.height + 10;
+    canvas.current.width = 200;
+    canvas.current.height = 500;
     c.current = canvas.current.getContext('2d');
 
     let interval = setInterval(() => {
@@ -32,21 +34,22 @@ function HatAnimation() {
       startBuilding('auto');
     }, 1000);
 
-    // window.addEventListener('focus', () => {
-    //   interval = setInterval(() => {
-    //     cancelAnimationFrame(animation);
-    //     startBuilding('auto');
-    //     console.log('object');
-    //   }, 1000);
-    // });
+    const onFocus = () => {
+      interval = setInterval(() => {
+        cancelAnimationFrame(animation);
+        startBuilding('auto');
+      }, 1000);
+    };
+    window.addEventListener('focus', onFocus);
 
-    window.addEventListener('blur', () => {
+    const onBlur = () => {
       // eslint-disable-next-line react-hooks/exhaustive-deps
       stars = [];
 
       clearInterval(interval);
       cancelAnimationFrame(animation);
-    });
+    };
+    window.addEventListener('blur', onBlur);
 
     return () => {
       // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -54,6 +57,8 @@ function HatAnimation() {
 
       clearInterval(interval);
       cancelAnimationFrame(animation);
+      window.removeEventListener('focus', onFocus);
+      window.removeEventListener('blur', onBlur);
     };
   }, []);
 
@@ -154,6 +159,10 @@ function HatAnimation() {
         cancelAnimationFrame(animation);
 
         startBuilding();
+
+        if (router.pathname !== '' && router.pathname !== '/') {
+          router.push('/');
+        }
       }
     }
   };

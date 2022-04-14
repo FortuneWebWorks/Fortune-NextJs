@@ -26,7 +26,8 @@ function BrowserAnimation() {
       canvas.current.height = 560;
     }
 
-    window.addEventListener('resize', () => {
+    const onResize = () => {
+      console.log(canvas.current);
       c.current.clearRect(0, 0, canvas.current.width, canvas.current.height);
       if (innerWidth < 720) {
         canvas.current.width = innerWidth / 1.2;
@@ -45,7 +46,8 @@ function BrowserAnimation() {
 
       init();
       fixLoadingPosition();
-    });
+    };
+    window.addEventListener('resize', onResize);
 
     const canvasInfo = canvas.current.getBoundingClientRect();
     const onWheelRole = (e) => {
@@ -82,6 +84,7 @@ function BrowserAnimation() {
 
     return () => {
       window.removeEventListener('scroll', onWheelRole);
+      window.removeEventListener('resize', onResize);
     };
   }, []);
 

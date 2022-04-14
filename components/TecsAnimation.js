@@ -47,20 +47,24 @@ function TecsAnimation() {
     canvas.current.width = innerWidth;
     canvas.current.height = innerHeight;
 
-    window.addEventListener('resize', () => {
+    const onResize = () => {
       canvas.current.width = innerWidth;
       canvas.current.height = innerHeight;
 
       // eslint-disable-next-line react-hooks/exhaustive-deps
       tecs = [];
       generator();
-    });
+    };
+
+    window.addEventListener('resize', onResize);
 
     generator();
     animate();
 
     return () => {
       cancelAnimationFrame(animation.current);
+
+      window.removeEventListener('resize', onResize);
     };
   });
 

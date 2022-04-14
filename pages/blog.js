@@ -44,7 +44,7 @@ function blog() {
         </header> */}
 
         <div className={styles.blog_post}>
-          <h2>
+          <h2 className={styles.blog_post_title}>
             THE COMPLETE TUTORIAL OF HOW TO BE FUCKING AMAZING IN ALL OF THE
             UNIVERSE
           </h2>
@@ -62,7 +62,7 @@ function blog() {
           </p>
         </div>
         <div className={styles.blog_post}>
-          <h2>
+          <h2 className={styles.blog_post_title}>
             THE COMPLETE TUTORIAL OF HOW TO BE FUCKING AMAZING IN ALL OF THE
             UNIVERSE
           </h2>
@@ -80,7 +80,7 @@ function blog() {
           </p>
         </div>
         <div className={styles.blog_post}>
-          <h2>
+          <h2 className={styles.blog_post_title}>
             THE COMPLETE TUTORIAL OF HOW TO BE FUCKING AMAZING IN ALL OF THE
             UNIVERSE
           </h2>
@@ -98,7 +98,7 @@ function blog() {
           </p>
         </div>
         <div className={styles.blog_post}>
-          <h2>
+          <h2 className={styles.blog_post_title}>
             THE COMPLETE TUTORIAL OF HOW TO BE FUCKING AMAZING IN ALL OF THE
             UNIVERSE
           </h2>

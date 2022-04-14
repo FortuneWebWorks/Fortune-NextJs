@@ -44,14 +44,13 @@ function Form() {
       validation = false;
     }
 
+    const sendigFormat =
+      encodeURI(`👤Name: ${data.name}\n\n📧Email: ${data.email}\n\n🌐Website: ${data.website}\n\n💬Discuss: ${data.discuss}\n
+    `);
+
     if (validation) {
-      console.log(process.env.TELEGRAM_CHAT_ID);
       fetch(
-        `https://api.telegram.org/bot${
-          process.env.TELEGRAM_BOT_TOKEN
-        }/sendMessage?chat_id=${
-          process.env.TELEGRAM_CHAT_ID
-        }&text=${JSON.stringify(data)}`
+        `https://api.telegram.org/bot${process.env.TELEGRAM_BOT_TOKEN}/sendMessage?chat_id=761026981&text=${sendigFormat}&parse_mode=HTML`
       );
     }
   };

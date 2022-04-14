@@ -54,4 +54,17 @@
     bottom: 25%;
     z-index: 4;
   }
+
+  // Ipad pro
+  @media (max-width: 1024px) {
+    transform: scale(0.9);
+  }
+
+  // Iphone 12 pro
+  @media (max-width: 450px) {
+    border-radius: 50%;
+    transform: scale(0.5);
+    left: -20px;
+    top: 5px;
+  }
 }

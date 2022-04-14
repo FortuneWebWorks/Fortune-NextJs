@@ -30,7 +30,7 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    align-items: center;
+    align-items: flex-start;
     gap: 2rem;
     font-weight: bold;
   }
@@ -38,8 +38,9 @@
   .section1_text > div,
   .section1_buttons {
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
     gap: 1rem;
 
     & :first-child {
@@ -59,8 +60,8 @@
     border: none;
     border-radius: 12px;
     padding: 14px 1rem;
-    text-align: center;
-    font-size: 1.8rem;
+    text-align: left;
+    font-size: 1.6rem;
     font-weight: bold;
   }
 

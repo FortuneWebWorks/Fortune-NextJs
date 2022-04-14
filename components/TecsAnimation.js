@@ -94,9 +94,13 @@ function TecsAnimation() {
       }
 
       // If icon get behind the text
+      const text = document.getElementById('text').getBoundingClientRect();
+
       if (
-        this.x > canvas.current.width / 2 - 800 / 2 &&
-        this.x < canvas.current.width / 2 + 500 / 2
+        this.y < text.top + text.height + 100 &&
+        this.y > text.top - 100 &&
+        this.x > text.left - 25 &&
+        this.x < text.left + text.width - 25
       ) {
         if (this.opacity >= 0.3) this.opacity -= 0.02;
       } else {
@@ -137,7 +141,7 @@ function TecsAnimation() {
     <section className={style.section3}>
       <canvas id="tecs" ref={canvas}></canvas>
       <div className={style.section3_text}>
-        <p>It isn’t sorcery. It’s good web design.</p>
+        <p id="text">It isn’t sorcery. It’s good web design.</p>
       </div>
     </section>
   );

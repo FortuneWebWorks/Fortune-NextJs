@@ -19,6 +19,7 @@ function BrowserAnimation() {
       canvas.current.height = 1000;
     } else if (innerWidth > 1400) {
       canvas.current.width = 1200;
+      canvas.current.height = 560;
     } else {
       canvas.current.width = innerWidth / 1.2;
       canvas.current.height = 560;

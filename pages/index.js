@@ -2,9 +2,10 @@ import Layout from '@/components/Layout';
 import section1 from '@/styles/Section1.module.scss';
 import section2 from '@/styles/Section2.module.scss';
 import section4 from '@/styles/Section4.module.scss';
-import HatAnimation from '@/components/HatAnimation';
+import Link from 'next/link';
 import BrowserAnimation from '@/components/BrowserAnimation';
 import TecsAnimation from '@/components/TecsAnimation';
+import Youtube from '@/components/Youtube';
 
 export default function Home() {
   return (
@@ -17,15 +18,20 @@ export default function Home() {
               <span> reality.</span>
             </h1>
             <div>
-              <button className={section1.hide_us}>
-                🪄 Hire us to work the magic
-              </button>
-              <button className={section1.hide_us}>
-                Receive a free consulting session today
-              </button>
+              <Link href="/form" passHref>
+                <button className={section1.hide_us}>
+                  🪄 Hire us to work the magic
+                </button>
+              </Link>
+              <Link href="/form" passHref>
+                <button className={section1.hide_us}>
+                  Receive a free consulting session today
+                </button>
+              </Link>
             </div>
           </div>
           {/* <HatAnimation /> */}
+          <Youtube />
 
           <div className={section1.section1_buttons}>
             <button className={section1.hide_us}>

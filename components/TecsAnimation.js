@@ -61,7 +61,6 @@ function TecsAnimation() {
 
     return () => {
       cancelAnimationFrame(animation.current);
-      console.log(animation.current);
     };
   });
 

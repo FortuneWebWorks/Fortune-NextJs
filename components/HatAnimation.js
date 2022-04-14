@@ -24,6 +24,10 @@ function HatAnimation() {
   });
 
   useEffect(() => {
+    if (!canvas.current) {
+      canvas.current = document.getElementById('canvas');
+    }
+
     containerInfo.current = container.current.getBoundingClientRect();
     canvas.current.width = 200;
     canvas.current.height = 500;

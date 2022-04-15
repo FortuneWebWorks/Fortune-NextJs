@@ -57,12 +57,12 @@ function HatAnimation() {
       // eslint-disable-next-line react-hooks/exhaustive-deps
       window.removeEventListener('focus', onFocus);
       window.removeEventListener('blur', onBlur);
-      // stars = [];
+      stars = [];
 
       clearInterval(interval);
       cancelAnimationFrame(animation);
     };
-  }, [stars]);
+  });
 
   class Star {
     constructor(x, y, dx, dy, size, fadeTime, id) {

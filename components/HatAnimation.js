@@ -1,9 +1,8 @@
 /** @type {HTMLCanvasElement} */
 import { useRef, useEffect } from 'react';
-import Link from 'next/link';
 import Image from 'next/image';
 import style from '@/styles/Hat.module.scss';
-import Router, { useRouter } from 'next/router';
+import { useRouter } from 'next/router';
 
 function HatAnimation() {
   const router = useRouter();

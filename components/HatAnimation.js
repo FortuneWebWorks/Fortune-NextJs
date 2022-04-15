@@ -23,12 +23,12 @@ function HatAnimation() {
     canvas.current.height = 500;
     const c = canvas.current.getContext('2d');
 
-    if (stars.length < limit) {
-      c.clearRect(0, 0, canvas.current.width, canvas.current.height);
-      cancelAnimationFrame(animation);
+    // if (stars.length < limit) {
+    //   c.clearRect(0, 0, canvas.current.width, canvas.current.height);
+    //   cancelAnimationFrame(animation);
 
-      startBuilding(null, c);
-    }
+    //   startBuilding(null, c);
+    // }
 
     let interval = setInterval(() => {
       cancelAnimationFrame(animation);

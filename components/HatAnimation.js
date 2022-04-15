@@ -16,16 +16,14 @@ function HatAnimation() {
   let stars = [];
   const limit = 70;
 
-  // Router.events.on('routeChangeStart', () => {
-  //   stars = [];
-  //   cancelAnimationFrame(animation);
-  //   clearInterval(interval);
-  //   return;
-  // });
+  Router.events.on('routeChangeStart', () => {
+    stars = [];
+    cancelAnimationFrame(animation);
+    clearInterval(interval);
+    return;
+  });
 
   useEffect(() => {
-    clearInterval(interval);
-    cancelAnimationFrame(animation);
     containerInfo.current = container.current.getBoundingClientRect();
     canvas.current.width = 200;
     canvas.current.height = 500;
@@ -62,7 +60,7 @@ function HatAnimation() {
       clearInterval(interval);
       cancelAnimationFrame(animation);
     };
-  }, [stars]);
+  }, []);
 
   class Star {
     constructor(x, y, dx, dy, size, fadeTime, id) {

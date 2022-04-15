@@ -16,8 +16,8 @@ function HatAnimation() {
   const limit = 70;
 
   useEffect(() => {
-    clearInterval(interval);
-    cancelAnimationFrame(animation);
+    // clearInterval(interval);
+    // cancelAnimationFrame(animation);
     containerInfo.current = container.current.getBoundingClientRect();
     canvas.current.width = 200;
     canvas.current.height = 500;

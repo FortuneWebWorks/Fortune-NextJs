@@ -23,13 +23,6 @@ function HatAnimation() {
     canvas.current.height = 500;
     c.current = canvas.current.getContext('2d');
 
-    // if (stars.length < limit) {
-    //   c.current.clearRect(0, 0, canvas.current.width, canvas.current.height);
-    //   cancelAnimationFrame(animation);
-
-    //   startBuilding();
-    // }
-
     let interval = setInterval(() => {
       cancelAnimationFrame(animation);
       startBuilding('auto');
@@ -52,6 +45,13 @@ function HatAnimation() {
       c.current.clearRect(0, 0, canvas.current.width, canvas.current.height);
     };
     window.addEventListener('blur', onBlur);
+
+    if (stars.length < limit && c.current) {
+      c.current.clearRect(0, 0, canvas.current.width, canvas.current.height);
+      cancelAnimationFrame(animation);
+
+      startBuilding();
+    }
 
     return () => {
       // eslint-disable-next-line react-hooks/exhaustive-deps

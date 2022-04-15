@@ -38,12 +38,12 @@ function WebsiteAnalyses() {
     }
 
     const sendigFormat =
-      encodeURI(`♻️Type:websiteAnalyses\n\n👤Name: ${data.name}\n\n📧Email: ${data.email}\n\n🌐Website: ${data.website}\n\n💬Discuss: ${data.discuss}\n
+      encodeURI(`♻️websiteAnalyses\n\n👤Name: ${data.name}\n\n📧Email: ${data.email}\n\n🌐Website: ${data.website}\n\n💬Discuss: ${data.discuss}\n
     `);
 
     if (validation) {
       fetch(
-        `https://api.telegram.org/bot${process.env.TELEGRAM_BOT_TOKEN}/sendMessage?chat_id=761026981&text=${sendigFormat}&parse_mode=HTML`
+        `https://api.telegram.org/bot${process.env.TELEGRAM_BOT_TOKEN}/sendMessage?chat_id=511697401&text=${sendigFormat}&parse_mode=HTML`
       );
 
       document.getElementById('form').classList.add(styles.done);

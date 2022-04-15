@@ -30,38 +30,38 @@ function HatAnimation() {
       startBuilding();
     }
 
-    // let interval = setInterval(() => {
-    //   cancelAnimationFrame(animation);
-    //   startBuilding('auto');
-    // }, 1000);
+    let interval = setInterval(() => {
+      cancelAnimationFrame(animation);
+      startBuilding('auto');
+    }, 1000);
 
-    // const onFocus = () => {
-    //   interval = setInterval(() => {
-    //     cancelAnimationFrame(animation);
-    //     startBuilding('auto');
-    //   }, 1000);
-    // };
-    // window.addEventListener('focus', onFocus);
+    const onFocus = () => {
+      interval = setInterval(() => {
+        cancelAnimationFrame(animation);
+        startBuilding('auto');
+      }, 1000);
+    };
+    window.addEventListener('focus', onFocus);
 
-    // const onBlur = () => {
-    //   // eslint-disable-next-line react-hooks/exhaustive-deps
-    //   stars = [];
+    const onBlur = () => {
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+      stars = [];
 
-    //   clearInterval(interval);
-    //   cancelAnimationFrame(animation);
-    //   c.current.clearRect(0, 0, canvas.current.width, canvas.current.height);
-    // };
-    // window.addEventListener('blur', onBlur);
+      clearInterval(interval);
+      cancelAnimationFrame(animation);
+      c.current.clearRect(0, 0, canvas.current.width, canvas.current.height);
+    };
+    window.addEventListener('blur', onBlur);
 
-    // return () => {
-    //   // eslint-disable-next-line react-hooks/exhaustive-deps
-    //   window.removeEventListener('focus', onFocus);
-    //   window.removeEventListener('blur', onBlur);
-    //   // stars = [];
+    return () => {
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+      window.removeEventListener('focus', onFocus);
+      window.removeEventListener('blur', onBlur);
+      // stars = [];
 
-    //   clearInterval(interval);
-    //   cancelAnimationFrame(animation);
-    // };
+      clearInterval(interval);
+      cancelAnimationFrame(animation);
+    };
   });
 
   class Star {
@@ -74,6 +74,10 @@ function HatAnimation() {
       this.fadeTime = Number(fadeTime).toFixed(4);
       this.opacity = 1;
       this.id = id;
+
+      this.img = document.createElement('img');
+      this.img.src = 'http://localhost:3000/sparkles.svg';
+      this.img.id = 'sparks';
     }
 
     createStar() {
@@ -83,8 +87,7 @@ function HatAnimation() {
       if (false) {
         c.current.fillText('✨', this.x, this.y);
       } else {
-        let img = document.createElement('img');
-        c.current.drawImage(img, this.x, this.y, this.size, this.size);
+        c.current.drawImage(this.img, this.x, this.y, this.size, this.size);
       }
       c.current.closePath();
     }

@@ -17,6 +17,9 @@ function HatAnimation() {
   const limit = 70;
 
   useEffect(() => {
+    canvas.current = document.getElementById('canvas');
+    imageToDraw.current = document.getElementById('sparks');
+
     clearInterval(interval);
     cancelAnimationFrame(animation);
     containerInfo.current = container.current.getBoundingClientRect();

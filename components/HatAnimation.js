@@ -1,9 +1,8 @@
 /** @type {HTMLCanvasElement} */
 import { useRef, useEffect } from 'react';
-import Link from 'next/link';
 import Image from 'next/image';
 import style from '@/styles/Hat.module.scss';
-import Router, { useRouter } from 'next/router';
+import { useRouter } from 'next/router';
 
 function HatAnimation() {
   const router = useRouter();
@@ -16,13 +15,6 @@ function HatAnimation() {
   let stars = [];
   const limit = 70;
 
-  // Router.events.on('routeChangeStart', () => {
-  //   stars = [];
-  //   cancelAnimationFrame(animation);
-  //   clearInterval(interval);
-  //   return;
-  // });
-
   useEffect(() => {
     clearInterval(interval);
     cancelAnimationFrame(animation);
@@ -30,6 +22,13 @@ function HatAnimation() {
     canvas.current.width = 200;
     canvas.current.height = 500;
     c.current = canvas.current.getContext('2d');
+
+    // if (stars.length < limit) {
+    //   c.current.clearRect(0, 0, canvas.current.width, canvas.current.height);
+    //   cancelAnimationFrame(animation);
+
+    //   startBuilding();
+    // }
 
     let interval = setInterval(() => {
       cancelAnimationFrame(animation);
@@ -50,6 +49,7 @@ function HatAnimation() {
 
       clearInterval(interval);
       cancelAnimationFrame(animation);
+      c.current.clearRect(0, 0, canvas.current.width, canvas.current.height);
     };
     window.addEventListener('blur', onBlur);
 
@@ -57,7 +57,7 @@ function HatAnimation() {
       // eslint-disable-next-line react-hooks/exhaustive-deps
       window.removeEventListener('focus', onFocus);
       window.removeEventListener('blur', onBlur);
-      stars = [];
+      // stars = [];
 
       clearInterval(interval);
       cancelAnimationFrame(animation);
@@ -160,11 +160,11 @@ function HatAnimation() {
         c.current.clearRect(0, 0, canvas.current.width, canvas.current.height);
         cancelAnimationFrame(animation);
 
-        startBuilding();
-
         if (router.pathname !== '' && router.pathname !== '/') {
           router.push('/');
         }
+
+        startBuilding();
       }
     }
   };

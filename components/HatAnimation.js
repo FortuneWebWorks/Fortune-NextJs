@@ -16,7 +16,6 @@ function HatAnimation() {
   const limit = 70;
 
   useEffect(() => {
-    canvas.current = document.getElementById('canvas');
     clearInterval(interval);
     cancelAnimationFrame(animation);
     containerInfo.current = container.current.getBoundingClientRect();
@@ -63,7 +62,7 @@ function HatAnimation() {
       clearInterval(interval);
       cancelAnimationFrame(animation);
     };
-  }, [stars]);
+  });
 
   class Star {
     constructor(x, y, dx, dy, size, fadeTime, id) {

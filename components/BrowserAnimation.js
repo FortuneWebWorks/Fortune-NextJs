@@ -84,7 +84,7 @@ function BrowserAnimation() {
       window.removeEventListener('scroll', onWheelRole);
       window.removeEventListener('resize', onResize);
     };
-  }, []);
+  });
 
   class Browser {
     constructor(x, y, width, height, radius, bgColor, device) {

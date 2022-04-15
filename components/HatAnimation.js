@@ -46,12 +46,12 @@ function HatAnimation() {
     };
     window.addEventListener('blur', onBlur);
 
-    if (stars.length < limit && c.current) {
-      c.current.clearRect(0, 0, canvas.current.width, canvas.current.height);
-      cancelAnimationFrame(animation);
+    // if (stars.length < limit && c.current) {
+    //   c.current.clearRect(0, 0, canvas.current.width, canvas.current.height);
+    //   cancelAnimationFrame(animation);
 
-      startBuilding();
-    }
+    //   startBuilding();
+    // }
 
     return () => {
       // eslint-disable-next-line react-hooks/exhaustive-deps

@@ -42,9 +42,8 @@ function TecsAnimation() {
   });
 
   useEffect(() => {
-    if (!canvas.current) {
-      canvas.current = document.getElementById('tecs');
-    }
+    canvas.current = document.getElementById('tecs');
+
     c.current = canvas.current.getContext('2d');
 
     canvas.current.width = innerWidth;

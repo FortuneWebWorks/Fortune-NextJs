@@ -18,12 +18,12 @@ export default function Home() {
               <span> reality.</span>
             </h1>
             <div>
-              <Link href="/form" passHref>
+              <Link href="/hireUs" passHref>
                 <button className={section1.hide_us}>
                   🪄 Hire us to work the magic
                 </button>
               </Link>
-              <Link href="/form" passHref>
+              <Link href="/websiteAnalyses" passHref>
                 <button className={section1.hide_us}>
                   Receive a free consulting session today
                 </button>
@@ -34,12 +34,12 @@ export default function Home() {
           <Youtube />
 
           <div className={section1.section1_buttons}>
-            <Link href="/form" passHref>
+            <Link href="/hireUs" passHref>
               <button className={section1.hide_us}>
                 🪄 Hire us to work the magic
               </button>
             </Link>
-            <Link href="/form" passHref>
+            <Link href="/websiteAnalyses" passHref>
               <button className={section1.hide_us}>
                 Receive a free consulting session today
               </button>

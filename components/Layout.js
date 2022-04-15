@@ -1,8 +1,21 @@
 import Head from 'next/head';
+import { useState, useEffect } from 'react';
+import styles from '@/styles/Layout.module.scss';
 import Header from './Header';
 import Footer from './Footer';
 
 function Layout({ children, title, desc }) {
+  const [displayChildren, setDisplayChildren] = useState(children);
+  const [transitionStage, setTransitionStage] = useState('fadeOut');
+
+  useEffect(() => {
+    setTransitionStage('fadeIn');
+  }, []);
+
+  useEffect(() => {
+    if (children !== displayChildren) setTransitionStage('fadeOut');
+  }, [children, setDisplayChildren, displayChildren]);
+
   return (
     <div>
       <Head>
@@ -12,9 +25,17 @@ function Layout({ children, title, desc }) {
         <meta name="description" content={desc} />
         <link rel="shortcut icon" href="favicon.jpg" type="image/x-icon" />
       </Head>
-      <Header />
-      {children}
-      <Footer />
+      <div
+        onTransitionEnd={() => {
+          if (transitionStage === 'fadeOut') {
+            setDisplayChildren(children);
+            setTransitionStage('fadeIn');
+          }
+        }}
+        className={`${styles.content} ${styles[transitionStage]}`}
+      >
+        {displayChildren}
+      </div>
     </div>
   );
 }

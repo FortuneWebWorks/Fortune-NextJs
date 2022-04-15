@@ -2,7 +2,7 @@ import { useRef } from 'react';
 import styles from '@/styles/Form.module.scss';
 import Layout from '@/components/Layout';
 
-function Form() {
+function WebsiteAnalyses() {
   const form = useRef();
 
   const onSubmit = (e) => {
@@ -38,13 +38,13 @@ function Form() {
     }
 
     const sendigFormat =
-      encodeURI(`👤Name: ${data.name}\n\n📧Email: ${data.email}\n\n🌐Website: ${data.website}\n\n💬Discuss: ${data.discuss}\n
+      encodeURI(`♻️Type:websiteAnalyses\n\n👤Name: ${data.name}\n\n📧Email: ${data.email}\n\n🌐Website: ${data.website}\n\n💬Discuss: ${data.discuss}\n
     `);
 
     if (validation) {
-      // fetch(
-      //   `https://api.telegram.org/bot${process.env.TELEGRAM_BOT_TOKEN}/sendMessage?chat_id=511697401&text=${sendigFormat}&parse_mode=HTML`
-      // );
+      fetch(
+        `https://api.telegram.org/bot${process.env.TELEGRAM_BOT_TOKEN}/sendMessage?chat_id=761026981&text=${sendigFormat}&parse_mode=HTML`
+      );
 
       document.getElementById('form').classList.add(styles.done);
     }
@@ -102,4 +102,4 @@ function Form() {
   );
 }
 
-export default Form;
+export default WebsiteAnalyses;

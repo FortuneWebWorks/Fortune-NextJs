@@ -83,7 +83,7 @@ function HatAnimation() {
       if (false) {
         c.current.fillText('✨', this.x, this.y);
       } else {
-        let img = document.getElementById('sparks');
+        let img = document.createElement('img');
         c.current.drawImage(img, this.x, this.y, this.size, this.size);
       }
       c.current.closePath();
@@ -197,12 +197,12 @@ function HatAnimation() {
       </div>
       <canvas id="canvas" ref={canvas}></canvas>
       {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img
+      {/* <img
         src="http://localhost:3000/sparkles.svg"
         alt="d"
         id="sparks"
         style={{ display: 'none' }}
-      />
+      /> */}
     </div>
   );
 }

@@ -9,6 +9,7 @@ function HatAnimation() {
   const canvas = useRef();
   const container = useRef();
   let containerInfo = useRef();
+  const imageToDraw = useRef();
   let c = useRef();
   let interval = null;
   let animation = null;
@@ -16,29 +17,29 @@ function HatAnimation() {
   const limit = 70;
 
   useEffect(() => {
-    // clearInterval(interval);
-    // cancelAnimationFrame(animation);
+    clearInterval(interval);
+    cancelAnimationFrame(animation);
     containerInfo.current = container.current.getBoundingClientRect();
     canvas.current.width = 200;
     canvas.current.height = 500;
-    const c = canvas.current.getContext('2d');
+    c.current = canvas.current.getContext('2d');
 
-    // if (stars.length < limit) {
-    //   c.clearRect(0, 0, canvas.current.width, canvas.current.height);
-    //   cancelAnimationFrame(animation);
+    if (stars.length < limit) {
+      c.current.clearRect(0, 0, canvas.current.width, canvas.current.height);
+      cancelAnimationFrame(animation);
 
-    //   startBuilding(null, c);
-    // }
+      startBuilding();
+    }
 
     let interval = setInterval(() => {
       cancelAnimationFrame(animation);
-      startBuilding('auto', c);
+      startBuilding('auto');
     }, 1000);
 
     const onFocus = () => {
       interval = setInterval(() => {
         cancelAnimationFrame(animation);
-        startBuilding('auto', c);
+        startBuilding('auto');
       }, 1000);
     };
     window.addEventListener('focus', onFocus);
@@ -49,7 +50,7 @@ function HatAnimation() {
 
       clearInterval(interval);
       cancelAnimationFrame(animation);
-      c.clearRect(0, 0, canvas.current.width, canvas.current.height);
+      c.current.clearRect(0, 0, canvas.current.width, canvas.current.height);
     };
     window.addEventListener('blur', onBlur);
 
@@ -65,8 +66,8 @@ function HatAnimation() {
   });
 
   class Star {
-    constructor(x, y, dx, dy, size, fadeTime, id, c) {
-      this.c = c;
+    constructor(x, y, dx, dy, size, fadeTime, id, img) {
+      this.img = img;
       this.x = x;
       this.y = y;
       this.dx = dx;
@@ -78,16 +79,16 @@ function HatAnimation() {
     }
 
     createStar() {
-      this.c.beginPath();
-      this.c.font = `${this.size}px verdana, sans-serif`;
-      this.c.globalAlpha = this.opacity >= 0 ? this.opacity : 0;
+      c.current.beginPath();
+      c.current.font = `${this.size}px verdana, sans-serif`;
+      c.current.globalAlpha = this.opacity >= 0 ? this.opacity : 0;
       if (false) {
-        this.c.fillText('✨', this.x, this.y);
+        c.current.fillText('✨', this.x, this.y);
       } else {
-        let img = document.getElementById('sparks');
-        this.c.drawImage(img, this.x, this.y, this.size, this.size);
+        // let img = document.getElementById('sparks');
+        c.current.drawImage(this.img, this.x, this.y, this.size, this.size);
       }
-      this.c.closePath();
+      c.current.closePath();
     }
 
     update(index) {
@@ -103,7 +104,7 @@ function HatAnimation() {
     }
   }
 
-  const startBuilding = (mode, c) => {
+  const startBuilding = (mode) => {
     if (mode === 'auto') {
       for (let i = 0; i < 3; i++) {
         const size = Math.random() * 20 + 5;
@@ -114,13 +115,24 @@ function HatAnimation() {
           fadeTime = Math.random() * (max - min) + min;
         const x = canvas.current.width / 2 - 10;
         const y = canvas.current.height;
-        stars.push(new Star(x, y, dx, dy, size, fadeTime.toFixed(3), i, c));
+        stars.push(
+          new Star(
+            x,
+            y,
+            dx,
+            dy,
+            size,
+            fadeTime.toFixed(3),
+            i,
+            imageToDraw.current
+          )
+        );
       }
 
       const animate = () => {
         animation = requestAnimationFrame(animate);
 
-        c.clearRect(0, 0, innerWidth, innerHeight);
+        c.current.clearRect(0, 0, innerWidth, innerHeight);
         stars.forEach((item, index) => {
           item.update(index);
         });
@@ -139,13 +151,24 @@ function HatAnimation() {
 
         const x = canvas.current.width / 2 - 10;
         const y = canvas.current.height;
-        stars.push(new Star(x, y, dx, dy, size, fadeTime.toFixed(3), i, c));
+        stars.push(
+          new Star(
+            x,
+            y,
+            dx,
+            dy,
+            size,
+            fadeTime.toFixed(3),
+            i,
+            imageToDraw.current
+          )
+        );
       }
 
       const animate = () => {
         animation = requestAnimationFrame(animate);
 
-        c.clearRect(0, 0, canvas.current.width, canvas.current.height);
+        c.current.clearRect(0, 0, canvas.current.width, canvas.current.height);
         stars.forEach((item, index) => {
           item.update(index);
         });
@@ -158,7 +181,7 @@ function HatAnimation() {
   const onClick = (e) => {
     if (e.target.classList.contains('hat')) {
       if (stars.length < limit) {
-        c.clearRect(0, 0, canvas.current.width, canvas.current.height);
+        c.current.clearRect(0, 0, canvas.current.width, canvas.current.height);
         cancelAnimationFrame(animation);
 
         if (router.pathname !== '' && router.pathname !== '/') {
@@ -203,6 +226,7 @@ function HatAnimation() {
         alt="d"
         id="sparks"
         style={{ display: 'none' }}
+        ref={imageToDraw}
       />
     </div>
   );

@@ -1,8 +1,6 @@
 import Head from 'next/head';
 import { useState, useEffect } from 'react';
 import styles from '@/styles/Layout.module.scss';
-import Header from './Header';
-import Footer from './Footer';
 
 function Layout({ children, title, desc }) {
   const [displayChildren, setDisplayChildren] = useState(children);

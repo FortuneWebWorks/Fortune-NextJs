@@ -161,7 +161,8 @@ const renderBlock = (block) => {
 };
 export default function Post({ page, blocks }) {
   return (
-    <Layout title={page.properties.slug.rich_text[0].text.content}>
+    <Layout>
+      {console.log(page)}
       <div className={styles.blog_body}>
         {blocks &&
           blocks.map((block) => (

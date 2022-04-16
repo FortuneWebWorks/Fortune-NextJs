@@ -472,7 +472,7 @@ body::-webkit-scrollbar-thumb {
 }
 
 .charts_browser_container div img {
-  width: 5rem;
+  width: 7rem;
 }
 
 @media (max-width: 1024px) {

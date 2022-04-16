@@ -1,39 +1,40 @@
 import { useEffect, useRef } from 'react';
 import style from '@/styles/Section3.module.scss';
 import Router from 'next/router';
+import Svg from '@/svg/Angular.svg';
 
 function TecsAnimation() {
   const canvas = useRef();
   const c = useRef();
   const animation = useRef();
   let tecs = [];
-  const url = 'http://localhost:3000';
+  // const url = 'http://localhost:3000';
 
   const paths = [
     [
-      { path: '/svg/Deno.svg' },
-      { path: '/svg/Angular.svg' },
-      { path: '/svg/Apache.svg' },
-      { path: '/svg/Docker.svg' },
+      { path: '../svg/Deno.svg' },
+      { path: '../svg/Angular.svg' },
+      { path: '../svg/Apache.svg' },
+      { path: '../svg/Docker.svg' },
     ],
     [
-      { path: '/svg/Go.svg' },
-      { path: '/svg/JavaScript.svg' },
-      { path: '/svg/laravel.svg' },
-      { path: '/svg/MongoDB.svg' },
+      { path: '../svg/Go.svg' },
+      { path: '../svg/JavaScript.svg' },
+      { path: '../svg/laravel.svg' },
+      { path: '../svg/MongoDB.svg' },
     ],
     [
-      { path: '/svg/MySQL.svg' },
-      { path: '/svg/nextjs.svg' },
-      { path: '/svg/Nginx.svg' },
-      { path: '/svg/Postgresql.svg' },
+      { path: '../svg/MySQL.svg' },
+      { path: '../svg/nextjs.svg' },
+      { path: '../svg/Nginx.svg' },
+      { path: '../svg/Postgresql.svg' },
     ],
     [
-      { path: '/svg/React.svg' },
-      { path: '/svg/Svelte.svg' },
-      { path: '/svg/Symfony.svg' },
-      { path: '/svg/Typescript.svg' },
-      { path: '/svg/vue.svg' },
+      { path: '../svg/React.svg' },
+      { path: '../svg/Svelte.svg' },
+      { path: '../svg/Symfony.svg' },
+      { path: '../svg/Typescript.svg' },
+      { path: '../svg/vue.svg' },
     ],
   ];
 
@@ -76,7 +77,7 @@ function TecsAnimation() {
       this.y = y;
       this.dx = dx;
       this.icon = document.createElement('img');
-      this.icon.src = `${url}${src}`;
+      this.icon.src = src;
       this.opacity = 1;
     }
 

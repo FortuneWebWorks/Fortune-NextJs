@@ -5,6 +5,11 @@
   src: url('../fonts/Founders_Grotesk/FoundersGrotesk-Regular.otf');
 }
 
+@font-face {
+  font-family: Cubano;
+  src: url('../fonts/Cubano-Font-Family/Cubano.ttf');
+}
+
 .blog_body {
   display: flex;
   flex-direction: column;
@@ -53,7 +58,7 @@
     }
   }
 
-  .blog_post_comment {
+  p {
     font-size: 1.3rem;
     font-family: Founders_Grotesk;
   }
@@ -69,7 +74,7 @@
       line-height: 2rem;
     }
 
-    .blog_post_comment {
+    p {
       font-size: 0.9rem;
     }
   }

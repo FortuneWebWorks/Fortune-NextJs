@@ -1,8 +1,8 @@
-import { Fragment, useState } from 'react';
-import { useRouter } from 'next/router';
+import { Fragment, useState, useRef, useEffect } from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
+import { getDatabase, getPage, getBlocks, getPageWithSlug } from '@/lib/notion';
 import styles from '@/styles/Blog.module.scss';
-import { getDatabase, getBlocks } from '@/lib/notion';
 import Layout from '@/components/Layout';
 
 export const Text = ({ text }) => {
@@ -159,94 +159,88 @@ const renderBlock = (block) => {
       })`;
   }
 };
-
-export default function Post({ blocks, database }) {
-  const router = useRouter();
-  const onClick = (e) => {
-    const isOpen = e.target.parentElement.hasAttribute('hide');
-    // const parent = e.target.parentElement.children;
-    // Display all none
-    // Fade in the target elemnt
-    // if (!isOpen) {
-    //   setTimeout(() => {
-    //     e.target.setAttribute('target', '');
-    //     for (let item of parent) {
-    //       item !== e.target
-    //         ? (item.style.display = 'none')
-    //         : (item.style.display = 'flex');
-    //       item.querySelector('.excerpt').style.display = 'none';
-    //       item.querySelector('.content').style.display = 'block';
-    //     }
-    //   }, 700);
-    // } else {
-    //   // Remove all previous targets
-    //   setTimeout(() => {
-    //     for (let item of parent) {
-    //       item.removeAttribute('target');
-    //       item.style.display = 'flex';
-    //       item.querySelector('.content').style.display = 'none';
-    //       item.querySelector('.excerpt').style.display = 'block';
-    //     }
-    //   }, 900);
-    // }
-    // Fade in and out the container
-    isOpen
-      ? e.target.parentElement.removeAttribute('hide')
-      : e.target.parentElement.removeAttribute('show');
-    e.target.parentElement.toggleAttribute(isOpen ? 'show' : 'hide');
-
-    router.push(`/blog/${e.target.id}`);
-  };
-
+export default function Post({ page, blocks }) {
   return (
-    <Layout>
-      <div className={styles.blog_body} onClick={onClick}>
-        {blocks.map((block, index) => (
-          <Fragment key={block[0].id}>
-            <div
-              className={styles.blog_post}
-              id={database[index].properties.slug.rich_text[0].text.content}
-            >
-              <h2 className={styles.blog_post_title}>
-                {database[index].properties.Name.title[0].text.content}
-              </h2>
-              <div className={styles.blog_post_info}>
-                <span className={styles.dude}>
-                  🟠
-                  {database[index].properties.Auther.rich_text[0].text.content}
-                </span>
-                <span className={styles.date}>
-                  📅{database[index].properties.Date.date.start}
-                </span>
+    <Layout title={page.properties.slug.rich_text[0].text.content}>
+      <div className={styles.blog_body}>
+        {blocks &&
+          blocks.map((block) => (
+            <Fragment key={block.id}>
+              <div
+                className={styles.blog_post}
+                id={page.properties.slug.rich_text[0].text.content}
+              >
+                <h2 className={styles.blog_post_title}>
+                  {page.properties.Name.title[0].text.content}
+                </h2>
+                <div className={styles.blog_post_info}>
+                  <span className={styles.dude}>
+                    🟠
+                    {page.properties.Auther.rich_text[0].text.content}
+                  </span>
+                  <span className={styles.date}>
+                    📅{page.properties.Date.date.start}
+                  </span>
+                </div>
+                <p className={`excerpt`} style={{ display: 'none' }}>
+                  {page.properties.Excerpt.rich_text[0].text.content}
+                </p>
+                <div className={`content`}>{renderBlock(block)}</div>
               </div>
-              <p className={`excerpt`}>
-                {database[index].properties.Excerpt.rich_text[0].text.content}
-              </p>
-              <div className={`content`} style={{ display: 'none' }}>
-                {renderBlock(block[0])}
-              </div>
-            </div>
-          </Fragment>
-        ))}
+            </Fragment>
+          ))}
       </div>
     </Layout>
   );
 }
 
-export const getStaticProps = async () => {
+export const getStaticPaths = async () => {
   const database = await getDatabase(process.env.NOTION_DATABASE_ID);
 
-  const blocks = await Promise.all(
-    database.map(async (item) => {
-      return await getBlocks(item.id);
-    })
+  return {
+    paths: database.map((page) => {
+      return {
+        params: { slug: page.properties.slug.rich_text[0].text.content },
+      };
+    }),
+    fallback: true,
+  };
+};
+
+export const getStaticProps = async (paths) => {
+  const { slug } = paths.params;
+
+  const slugyPage = await getPageWithSlug(slug);
+
+  const page = await slugyPage[0];
+
+  const id = await page.id;
+
+  const blocks = await getBlocks(id);
+  const childBlocks = await Promise.all(
+    blocks
+      .filter((block) => block.has_children)
+      .map(async (block) => {
+        return {
+          id: block.id,
+          children: await getBlocks(block.id),
+        };
+      })
   );
+  const blocksWithChildren = await blocks.map((block) => {
+    if (block.has_children && !block[block.type].children) {
+      block[block.type]['children'] = childBlocks.find(
+        (x) => x.id === block.id
+      )?.children;
+    }
+    return block;
+  });
 
   return {
     props: {
-      database,
-      blocks,
+      page,
+      blocks: blocksWithChildren,
     },
-    revalidate: 1,
+    revalidate: 60,
   };
 };

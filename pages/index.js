@@ -47,7 +47,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section className={section2.section2}>
+        {/* <section className={section2.section2}>
           <h2>
             Delivery of fast and reliable services, like pulling a rabbit out of
             a hat.
@@ -56,39 +56,30 @@ export default function Home() {
             Say goodbye to bloated and overly complicated solutions— web design
             shouldn’t be a riddle.
           </h2>
-          <div className={section2.section2_browsers} id="section2-scroll">
-            <BrowserAnimation />
-          </div>
-        </section>
+          <div className={section2.section2_browsers} id="section2-scroll"> */}
+        <BrowserAnimation />
+        {/* </div> */}
+        {/* </section> */}
 
         <section className={section4.section4}>
           <h3>Applause for Fortune:</h3>
           <div className={section4.section4_cards}>
             <div>
-              <span>they are the best fucking people in the universe.</span>
-              <p>- someone</p>
-            </div>
-            <div>
-              <span>they are the best fucking people in the universe.</span>
-              <p>- someone</p>
-            </div>
-            <div>
               <span>
-                they are the best fucking peoplein for sure the universe
+                I would like to formally and sincerely express my gratitude for
+                your excellent work in developing our online psychological
+                assessment system for Arameh Psychological Center.<br></br> Your
+                production of the online family assessment system has directly
+                impacted our indexes to serve clientele by enhancing their
+                satisfaction with our services. I want you to know that I value
+                the amount of effort you have put into your work and see great
+                potential in you.
               </span>
-              <p>- someone</p>
-            </div>
-            <div>
-              <span>
-                they are the best fucking peoplein for sure the universe
-              </span>
-              <p>- someone</p>
-            </div>
-            <div>
-              <span>
-                they are the best fucking peoplein for sure the universe
-              </span>
-              <p>- someone</p>
+              <p>
+                - Dr, Siamak Samani<br></br>
+                Associate Prof. In Psychology<br></br>
+                Chair of Aramesh Pychological Center<br></br>
+              </p>
             </div>
           </div>
         </section>

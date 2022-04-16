@@ -1,4 +1,5 @@
 import { Fragment, useState } from 'react';
+import { useRouter } from 'next/router';
 import Link from 'next/link';
 import styles from '@/styles/Blog.module.scss';
 import { getDatabase, getBlocks } from '@/lib/notion';
@@ -160,43 +161,40 @@ const renderBlock = (block) => {
 };
 
 export default function Post({ blocks, database }) {
+  const router = useRouter();
   const onClick = (e) => {
-    const isOpen = e.target.parentElement.hasAttribute('hide');
-
-    const parent = e.target.parentElement.children;
-
-    // Display all none
-    // Fade in the target elemnt
-    if (!isOpen) {
-      setTimeout(() => {
-        e.target.setAttribute('target', '');
-        for (let item of parent) {
-          item !== e.target
-            ? (item.style.display = 'none')
-            : (item.style.display = 'flex');
-
-          item.querySelector('.excerpt').style.display = 'none';
-          item.querySelector('.content').style.display = 'block';
-        }
-      }, 700);
-    } else {
-      // Remove all previous targets
-      setTimeout(() => {
-        for (let item of parent) {
-          item.removeAttribute('target');
-          item.style.display = 'flex';
-
-          item.querySelector('.content').style.display = 'none';
-          item.querySelector('.excerpt').style.display = 'block';
-        }
-      }, 900);
-    }
-
-    // Fade in and out the container
-    isOpen
-      ? e.target.parentElement.removeAttribute('hide')
-      : e.target.parentElement.removeAttribute('show');
-    e.target.parentElement.toggleAttribute(isOpen ? 'show' : 'hide');
+    // const isOpen = e.target.parentElement.hasAttribute('hide');
+    // const parent = e.target.parentElement.children;
+    // // Display all none
+    // // Fade in the target elemnt
+    // if (!isOpen) {
+    //   setTimeout(() => {
+    //     e.target.setAttribute('target', '');
+    //     for (let item of parent) {
+    //       item !== e.target
+    //         ? (item.style.display = 'none')
+    //         : (item.style.display = 'flex');
+    //       item.querySelector('.excerpt').style.display = 'none';
+    //       item.querySelector('.content').style.display = 'block';
+    //     }
+    //   }, 700);
+    // } else {
+    //   // Remove all previous targets
+    //   setTimeout(() => {
+    //     for (let item of parent) {
+    //       item.removeAttribute('target');
+    //       item.style.display = 'flex';
+    //       item.querySelector('.content').style.display = 'none';
+    //       item.querySelector('.excerpt').style.display = 'block';
+    //     }
+    //   }, 900);
+    // }
+    // // Fade in and out the container
+    // isOpen
+    //   ? e.target.parentElement.removeAttribute('hide')
+    //   : e.target.parentElement.removeAttribute('show');
+    // e.target.parentElement.toggleAttribute(isOpen ? 'show' : 'hide');
+    router.push(`/blog/${e.target.id}`);
   };
 
   return (
@@ -204,7 +202,10 @@ export default function Post({ blocks, database }) {
       <div className={styles.blog_body} onClick={onClick} show>
         {blocks.map((block, index) => (
           <Fragment key={block[0].id}>
-            <div className={styles.blog_post} id={block[0].id}>
+            <div
+              className={styles.blog_post}
+              id={database[index].properties.Name.title[0].text.content}
+            >
               <h2 className={styles.blog_post_title}>
                 {database[index].properties.Name.title[0].text.content}
               </h2>

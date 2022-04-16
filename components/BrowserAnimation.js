@@ -51,7 +51,6 @@ function BrowserAnimation() {
                 <img
                   src="https://drive.google.com/uc?export=view&id=1Dt19ogtzRPP7Tghz0mcuulIscDd6wbau"
                   alt="img"
-                  // style={{ width: 'rem' }}
                 />
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img

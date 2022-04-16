@@ -155,10 +155,13 @@ svg {
 
 html,
 body {
+  position: relative;
   width: 100%;
   height: fit-content;
   background-color: #212336;
   color: #fff;
+  scroll-behavior: smooth;
+  padding-bottom: 5rem;
   scroll-behavior: smooth;
 }
 

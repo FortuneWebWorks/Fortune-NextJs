@@ -1,5 +1,4 @@
-import { Fragment } from 'react';
-import Head from 'next/head';
+import { Fragment, useState } from 'react';
 import Link from 'next/link';
 import styles from '@/styles/Blog.module.scss';
 import { getDatabase, getBlocks } from '@/lib/notion';
@@ -47,7 +46,6 @@ const renderNestedList = (block) => {
 };
 
 const renderBlock = (block) => {
-  console.log(block);
   const { type, id } = block;
   const value = block[type];
 
@@ -162,29 +160,69 @@ const renderBlock = (block) => {
 };
 
 export default function Post({ blocks, database }) {
-  if (!blocks) {
-    return <div />;
-  }
+  const onClick = (e) => {
+    const isOpen = e.target.parentElement.hasAttribute('hide');
+
+    const parent = e.target.parentElement.children;
+
+    // Display all none
+    // Fade in the target elemnt
+    if (!isOpen) {
+      setTimeout(() => {
+        e.target.setAttribute('target', '');
+        for (let item of parent) {
+          item !== e.target
+            ? (item.style.display = 'none')
+            : (item.style.display = 'flex');
+
+          item.querySelector('.excerpt').style.display = 'none';
+          item.querySelector('.content').style.display = 'block';
+        }
+      }, 700);
+    } else {
+      // Remove all previous targets
+      setTimeout(() => {
+        for (let item of parent) {
+          item.removeAttribute('target');
+          item.style.display = 'flex';
+
+          item.querySelector('.content').style.display = 'none';
+          item.querySelector('.excerpt').style.display = 'block';
+        }
+      }, 900);
+    }
+
+    // Fade in and out the container
+    isOpen
+      ? e.target.parentElement.removeAttribute('hide')
+      : e.target.parentElement.removeAttribute('show');
+    e.target.parentElement.toggleAttribute(isOpen ? 'show' : 'hide');
+  };
 
   return (
     <Layout>
-      <div className={styles.blog_body}>
+      <div className={styles.blog_body} onClick={onClick} show>
         {blocks.map((block, index) => (
           <Fragment key={block[0].id}>
-            <div className={styles.blog_post}>
+            <div className={styles.blog_post} id={block[0].id}>
               <h2 className={styles.blog_post_title}>
-                {database[index].properties.title.rich_text[0].text.content}
+                {database[index].properties.Name.title[0].text.content}
               </h2>
               <div className={styles.blog_post_info}>
                 <span className={styles.dude}>
-                  <span className={styles.point_circle}>🟠</span>
+                  🟠
                   {database[index].properties.Auther.rich_text[0].text.content}
                 </span>
                 <span className={styles.date}>
-                  {database[index].properties.Date.date.start}
+                  📅{database[index].properties.Date.date.start}
                 </span>
               </div>
-              {renderBlock(block[0])}
+              <p className={`excerpt`}>
+                {database[index].properties.Excerpt.rich_text[0].text.content}
+              </p>
+              <div className={`content`} style={{ display: 'none' }}>
+                {renderBlock(block[0])}
+              </div>
             </div>
           </Fragment>
         ))}

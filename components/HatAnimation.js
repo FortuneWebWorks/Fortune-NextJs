@@ -60,7 +60,7 @@ function HatAnimation() {
       // eslint-disable-next-line react-hooks/exhaustive-deps
       window.removeEventListener('focus', onFocus);
       window.removeEventListener('blur', onBlur);
-      // stars = [];
+      stars = [];
 
       clearInterval(interval);
       cancelAnimationFrame(animation);
@@ -77,9 +77,8 @@ function HatAnimation() {
       this.fadeTime = Number(fadeTime).toFixed(4);
       this.opacity = 1;
       this.id = id;
-
       this.img = document.createElement('img');
-      this.img.src = 'http://localhost:3000/sparkles.svg';
+      this.img.src = '/svg/React.svg';
       this.img.id = 'sparks';
     }
 
@@ -87,11 +86,7 @@ function HatAnimation() {
       c.current.beginPath();
       c.current.font = `${this.size}px verdana, sans-serif`;
       c.current.globalAlpha = this.opacity >= 0 ? this.opacity : 0;
-      if (false) {
-        c.current.fillText('✨', this.x, this.y);
-      } else {
-        c.current.drawImage(this.img, this.x, this.y, this.size, this.size);
-      }
+      c.current.drawImage(this.img, this.x, this.y, this.size, this.size);
       c.current.closePath();
     }
 
@@ -181,25 +176,15 @@ function HatAnimation() {
       onTouchStart={onClick}
     >
       <div className={style.hat1}>
-        {/* <Image src={Chapue} layout="fill" alt="" className="hat" /> */}
         <Chapue className="hat" />
       </div>
       <div className={style.hat2}>
-        {/* <Image src={hat} layout="fill" alt="" className="hat" /> */}
         <Hat className="hat" />
       </div>
       <div className={style.hat3}>
-        {/* <Image src={topLayer} layout="fill" alt="" className="hat" /> */}
         <TopLayer className="hat" />
       </div>
       <canvas id="canvas" ref={canvas}></canvas>
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      {/* <img
-        src="http://localhost:3000/sparkles.svg"
-        alt="d"
-        id="sparks"
-        style={{ display: 'none' }}
-      /> */}
     </div>
   );
 }

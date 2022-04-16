@@ -488,6 +488,7 @@ body::-webkit-scrollbar-thumb {
   .section2 .section2-browsers {
     padding: 0 2rem;
     bottom: 30%;
+    flex-direction: column;
   }
   .section2 h2 {
     font-size: 1.7rem;

@@ -3,16 +3,16 @@ import { useState, useEffect } from 'react';
 import styles from '@/styles/Layout.module.scss';
 
 function Layout({ children, title, desc }) {
-  // const [displayChildren, setDisplayChildren] = useState(children);
-  // const [transitionStage, setTransitionStage] = useState('fadeOut');
+  const [displayChildren, setDisplayChildren] = useState(children);
+  const [transitionStage, setTransitionStage] = useState('fadeOut');
 
-  // useEffect(() => {
-  //   setTransitionStage('fadeIn');
-  // }, []);
+  useEffect(() => {
+    setTransitionStage('fadeIn');
+  }, []);
 
-  // useEffect(() => {
-  //   if (children !== displayChildren) setTransitionStage('fadeOut');
-  // }, [children, setDisplayChildren, displayChildren]);
+  useEffect(() => {
+    if (children !== displayChildren) setTransitionStage('fadeOut');
+  }, [children, setDisplayChildren, displayChildren]);
 
   return (
     <div>
@@ -23,7 +23,7 @@ function Layout({ children, title, desc }) {
         <meta name="description" content={desc} />
         <link rel="shortcut icon" href="favicon.jpg" type="image/x-icon" />
       </Head>
-      {/* <div
+      <div
         onTransitionEnd={() => {
           if (transitionStage === 'fadeOut') {
             setDisplayChildren(children);
@@ -33,8 +33,7 @@ function Layout({ children, title, desc }) {
         className={`${styles.content} ${styles[transitionStage]}`}
       >
         {displayChildren}
-      </div> */}
-      {children}
+      </div>
     </div>
   );
 }

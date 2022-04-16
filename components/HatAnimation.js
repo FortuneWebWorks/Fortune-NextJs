@@ -174,7 +174,12 @@ function HatAnimation() {
   };
 
   return (
-    <div className={style.container} ref={container} onClick={onClick}>
+    <div
+      className={style.container}
+      ref={container}
+      onClick={onClick}
+      onTouchStart={onClick}
+    >
       <div className={style.hat1}>
         {/* <Image src={Chapue} layout="fill" alt="" className="hat" /> */}
         <Chapue className="hat" />

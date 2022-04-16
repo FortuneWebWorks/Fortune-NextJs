@@ -37,22 +37,36 @@
   }
 
   .hat1 {
-    width: 5rem;
+    width: 6rem;
     bottom: 41%;
     left: 49%;
     z-index: 1;
   }
 
   .hat3 {
-    bottom: 18%;
-    z-index: 3;
+    width: 5rem;
+    height: 1.6rem;
+    bottom: 42%;
+    z-index: 4;
   }
 
   .hat2 {
-    width: 3.2rem;
+    width: 4.2rem;
     height: 3.6rem;
-    bottom: 25%;
+    bottom: 4%;
+    left: 49.5%;
     z-index: 4;
+  }
+
+  svg {
+    width: inherit;
+    height: inherit;
+    -webkit-user-drag: none;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    pointer-events: none;
   }
 
   // Ipad pro

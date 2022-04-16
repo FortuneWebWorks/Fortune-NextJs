@@ -3,6 +3,9 @@ import { useRef, useEffect } from 'react';
 import Image from 'next/image';
 import style from '@/styles/Hat.module.scss';
 import { useRouter } from 'next/router';
+import Chapue from '@/svg/hat/chapue.svg';
+import Hat from '@/svg/hat/hat.svg';
+import TopLayer from '@/svg/hat/top-layer.svg';
 
 function HatAnimation() {
   const router = useRouter();
@@ -158,45 +161,31 @@ function HatAnimation() {
   };
 
   const onClick = (e) => {
-    if (e.target.classList.contains('hat')) {
-      if (stars.length < limit) {
-        c.current.clearRect(0, 0, canvas.current.width, canvas.current.height);
-        cancelAnimationFrame(animation);
+    if (stars.length < limit) {
+      c.current.clearRect(0, 0, canvas.current.width, canvas.current.height);
+      cancelAnimationFrame(animation);
 
-        if (router.pathname !== '' && router.pathname !== '/') {
-          router.push('/');
-        }
-
-        startBuilding();
+      if (router.pathname !== '' && router.pathname !== '/') {
+        router.push('/');
       }
+
+      startBuilding();
     }
   };
 
   return (
     <div className={style.container} ref={container} onClick={onClick}>
       <div className={style.hat1}>
-        <Image
-          src={'http://localhost:3000/hat/chapue.svg'}
-          layout="fill"
-          alt=""
-          className="hat"
-        />
+        {/* <Image src={Chapue} layout="fill" alt="" className="hat" /> */}
+        <Chapue className="hat" />
       </div>
       <div className={style.hat2}>
-        <Image
-          src={'http://localhost:3000/hat/top-layer.svg'}
-          layout="fill"
-          alt=""
-          className="hat"
-        />
+        {/* <Image src={hat} layout="fill" alt="" className="hat" /> */}
+        <Hat className="hat" />
       </div>
       <div className={style.hat3}>
-        <Image
-          src={'http://localhost:3000/hat/hat.svg'}
-          layout="fill"
-          alt=""
-          className="hat"
-        />
+        {/* <Image src={topLayer} layout="fill" alt="" className="hat" /> */}
+        <TopLayer className="hat" />
       </div>
       <canvas id="canvas" ref={canvas}></canvas>
       {/* eslint-disable-next-line @next/next/no-img-element */}

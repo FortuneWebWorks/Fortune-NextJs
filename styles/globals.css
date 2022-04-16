@@ -481,6 +481,14 @@ body::-webkit-scrollbar-thumb {
   }
 }
 
+@media (max-width: 768px) {
+  .section2 .section2-browsers {
+    padding: 0 2rem;
+    bottom: 40%;
+    flex-direction: column;
+  }
+}
+
 @media (max-width: 450px) {
   .section2 {
     padding: 2rem 2px;

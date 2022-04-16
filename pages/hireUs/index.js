@@ -10,12 +10,10 @@ function Form() {
 
     const name = form.current.name.value;
     const email = form.current.email.value;
-    const website = form.current.website.value;
     const discuss = form.current.discuss.value;
     const data = {
       name,
       email,
-      website,
       discuss,
     };
     let validation = true;
@@ -28,17 +26,13 @@ function Form() {
       form.current.email.classList.add(styles.error);
       validation = false;
     }
-    if (!data.website || data.website === '') {
-      form.current.website.classList.add(styles.error);
-      validation = false;
-    }
     if (!data.discuss || data.discuss === '') {
       form.current.discuss.classList.add(styles.error);
       validation = false;
     }
 
     const sendigFormat =
-      encodeURI(`🤝🏻hireUs\n\n👤Name: ${data.name}\n\n📧Email: ${data.email}\n\n🌐Website: ${data.website}\n\n💬Discuss: ${data.discuss}\n
+      encodeURI(`🤝🏻hireUs\n\n👤Name: ${data.name}\n\n📧Email: ${data.email}\n\n💬Discuss: ${data.discuss}\n
     `);
 
     if (validation) {
@@ -69,11 +63,6 @@ function Form() {
                 <label htmlFor="email">email:</label>
                 <input type="email" name="email" id="email" />
               </div>
-            </div>
-
-            <div>
-              <label htmlFor="website">website url/link for analysis:</label>
-              <input type="url" name="website" id="website" />
             </div>
 
             <div>

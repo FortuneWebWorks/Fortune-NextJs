@@ -484,10 +484,11 @@ body::-webkit-scrollbar-thumb {
 @media (max-width: 450px) {
   .section2 {
     padding: 2rem 2px;
+    margin-bottom: 17rem;
   }
   .section2 .section2-browsers {
     padding: 0 2rem;
-    bottom: 30%;
+    bottom: 40%;
     flex-direction: column;
   }
   .section2 h2 {

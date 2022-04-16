@@ -12,7 +12,7 @@ function BrowserAnimation() {
         shouldn’t be a riddle.
       </h2>
       <div className="section2-browsers" id="section2-scroll">
-        <div className="section2-icnon">
+        <div className="section2-icnon" style={{ position: 'relative' }}>
           <div className="section2-searchbar">
             <div className="buttons">
               <div className="btn"></div>
@@ -25,12 +25,18 @@ function BrowserAnimation() {
               <div></div>
             </div>
           </div>
-
-          {/* <Image
-            src="./files/icons/gif/loading.gif"
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="https://drive.google.com/uc?export=view&id=1JZnd3ri1q5A02BfC1cIAqeDqaY3gXTLl"
             alt="Loading..."
-            layout="fill"
-          /> */}
+            style={{
+              width: '30%',
+              position: 'absolute',
+              top: '50%',
+              left: '50%',
+              transform: 'translate(-50%, -40%)',
+            }}
+          />
         </div>
 
         <div className="section2-icnon section2-goodBrowser">

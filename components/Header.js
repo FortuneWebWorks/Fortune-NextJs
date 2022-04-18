@@ -20,12 +20,24 @@ function Header() {
         <Link href="/blog" passHref>
           <span>blog</span>
         </Link>
-        <Link href="/" passHref>
-          <span>twitter</span>
-        </Link>
-        <Link href="/form" passHref>
-          <span>upwork</span>
-        </Link>
+        <span>
+          <a
+            target="_blank"
+            href="https://twitter.com/fortunewebworks"
+            rel="noopener noreferrer"
+          >
+            twitter
+          </a>
+        </span>
+        <span>
+          <a
+            target="_blank"
+            href="https://upwork.com/fortunewebworks"
+            rel="noopener noreferrer"
+          >
+            upwork
+          </a>
+        </span>
       </div>
     </header>
   );

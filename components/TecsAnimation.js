@@ -8,7 +8,6 @@ function TecsAnimation() {
   const c = useRef();
   const animation = useRef();
   let tecs = [];
-  // const url = 'http://localhost:3000';
 
   const paths = [
     [
@@ -35,6 +34,12 @@ function TecsAnimation() {
       { path: '../svg/Symfony.svg' },
       { path: '../svg/Typescript.svg' },
       { path: '../svg/vue.svg' },
+    ],
+    [
+      { path: '../svg/inertia.svg' },
+      { path: '../svg/rust.svg' },
+      { path: '../svg/Web3.svg' },
+      { path: '../svg/solidity.svg' },
     ],
   ];
 

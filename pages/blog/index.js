@@ -108,7 +108,7 @@ const renderBlock = (block) => {
     case 'image':
       const src =
         value.type === 'external' ? value.external.url : value.file.url;
-      console.log(src);
+
       const caption = value.caption ? value.caption[0]?.plain_text : '';
       return (
         <figure>

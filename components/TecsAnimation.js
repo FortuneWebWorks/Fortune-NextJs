@@ -27,19 +27,21 @@ function TecsAnimation() {
       { path: '../svg/nextjs.svg' },
       { path: '../svg/Nginx.svg' },
       { path: '../svg/Postgresql.svg' },
+      { path: '../svg/nodejs.svg' },
     ],
     [
       { path: '../svg/React.svg' },
       { path: '../svg/Svelte.svg' },
       { path: '../svg/Symfony.svg' },
       { path: '../svg/Typescript.svg' },
-      { path: '../svg/vue.svg' },
+      { path: '../svg/vuejs.svg' },
     ],
     [
       { path: '../svg/inertia.svg' },
       { path: '../svg/rust.svg' },
       { path: '../svg/Web3.svg' },
       { path: '../svg/solidity.svg' },
+      { path: '../svg/php.svg' },
     ],
   ];
 

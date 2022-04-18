@@ -108,7 +108,7 @@ const renderBlock = (block) => {
     case 'image':
       const src =
         value.type === 'external' ? value.external.url : value.file.url;
-      console.log(src);
+
       const caption = value.caption ? value.caption[0]?.plain_text : '';
       return (
         <figure>
@@ -162,7 +162,6 @@ const renderBlock = (block) => {
 export default function Post({ page, blocks }) {
   return (
     <Layout>
-      {console.log(page)}
       <div className={styles.blog_body}>
         {blocks &&
           blocks.map((block) => (

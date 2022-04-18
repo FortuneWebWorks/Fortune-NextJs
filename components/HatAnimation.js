@@ -8,7 +8,6 @@ import Hat from '@/svg/hat/hat.svg';
 import TopLayer from '@/svg/hat/top-layer.svg';
 
 function HatAnimation({ notEffect }) {
-  console.log(notEffect);
   const router = useRouter();
   const canvas = useRef();
   const container = useRef();

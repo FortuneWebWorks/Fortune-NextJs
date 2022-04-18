@@ -7,7 +7,8 @@ import Chapue from '@/svg/hat/chapue.svg';
 import Hat from '@/svg/hat/hat.svg';
 import TopLayer from '@/svg/hat/top-layer.svg';
 
-function HatAnimation() {
+function HatAnimation({ notEffect }) {
+  console.log(notEffect);
   const router = useRouter();
   const canvas = useRef();
   const container = useRef();
@@ -26,7 +27,7 @@ function HatAnimation() {
     canvas.current.height = 500;
     c.current = canvas.current.getContext('2d');
 
-    if (stars.length < limit) {
+    if (stars.length < limit && !notEffect) {
       c.current.clearRect(0, 0, canvas.current.width, canvas.current.height);
       cancelAnimationFrame(animation);
 
@@ -156,7 +157,7 @@ function HatAnimation() {
   };
 
   const onClick = (e) => {
-    if (stars.length < limit) {
+    if (stars.length < limit && !notEffect) {
       c.current.clearRect(0, 0, canvas.current.width, canvas.current.height);
       cancelAnimationFrame(animation);
 

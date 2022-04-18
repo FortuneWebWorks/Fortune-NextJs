@@ -6,7 +6,7 @@ function Footer() {
     <footer className={style.footer}>
       <div className={style.footer_content_1}>
         <div className={styles.logo}>
-          <HatAnimation />
+          <HatAnimation notEffect="true" />
         </div>
         <span>fortune web works</span>
       </div>

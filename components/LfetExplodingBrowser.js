@@ -143,8 +143,7 @@ function LfetExplodingBrowser() {
       .getElementById('fire-place')
       .getBoundingClientRect();
 
-    console.log('container-top:', container.top);
-    if (container.top < -20) {
+    if (container.top < 0) {
       exploders.current.forEach((item) => {
         item.setFire = true;
       });

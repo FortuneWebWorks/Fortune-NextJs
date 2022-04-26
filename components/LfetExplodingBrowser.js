@@ -6,6 +6,7 @@ import CodeEditors from './CodeEditors';
 
 function LfetExplodingBrowser() {
   const canvas = useRef();
+  const animation = useRef();
   let exploders = useRef([]);
   const c = useRef();
 
@@ -33,12 +34,14 @@ function LfetExplodingBrowser() {
 
     return () => {
       window.removeEventListener('scroll', fire);
+      cancelAnimationFrame(animation.current);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const animate = () => {
-    requestAnimationFrame(animate);
+    if (!canvas.current) return;
+    animation.current = requestAnimationFrame(animate);
 
     c.current.clearRect(0, 0, canvas.current.width, canvas.current.height);
 
@@ -194,8 +197,8 @@ function LfetExplodingBrowser() {
           setTimeout(() => {
             browserContent.children[1].style.opacity = 1;
           }, 1000);
-        }, 2000);
-      }, 2500);
+        }, 1000);
+      }, 1000);
     }
   };
 

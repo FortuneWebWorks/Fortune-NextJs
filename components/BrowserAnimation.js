@@ -9,16 +9,16 @@ function BrowserAnimation() {
         className={styles.text}
         style={{ transition: 'opacity 0.5s ease-out' }}
       >
-        Delivery of fast and reliable services, like pulling a rabbit out of a
-        hat.
+        Say goodbye to bloated and overly complicated solutions— web design
+        shouldn’t be a riddle.
       </h2>
       <h2
         className={styles.text}
         id="fire-place"
         style={{ transition: 'opacity 0.5s ease-out' }}
       >
-        Say goodbye to bloated and overly complicated solutions— web design
-        shouldn’t be a riddle.
+        Delivery of fast and reliable services, like pulling a rabbit out of a
+        hat.
       </h2>
       <div
         className={styles.section2_browsers}

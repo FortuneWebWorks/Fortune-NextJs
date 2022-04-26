@@ -1,0 +1,64 @@
+.container {
+  width: 100%;
+  height: 150%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+
+  .editors_container {
+    width: 25rem;
+    height: 15rem;
+    border-radius: 12px;
+    background-color: #1e1e1e;
+  }
+
+  .editors_container div:nth-child(1) {
+    width: 100%;
+    height: 1rem;
+    border-radius: 12px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 5px 0 3px 7px;
+    gap: 2px;
+    background-color: inherit;
+  }
+  .editors_container div:nth-child(2) {
+    width: 100%;
+    height: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 10px;
+    background-color: #444;
+  }
+  .editors_container div:nth-child(3) {
+    width: 100%;
+    height: auto;
+    background-color: inherit;
+    white-space: pre;
+  }
+
+  // Mac buttons
+  .editors_container div:nth-child(1) span:nth-child(1) {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background-color: yellow;
+  }
+  .editors_container div:nth-child(1) span:nth-child(2) {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background-color: green;
+  }
+  .editors_container div:nth-child(1) span:nth-child(3) {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background-color: red;
+  }
+}

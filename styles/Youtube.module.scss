@@ -1,6 +1,7 @@
 .youtube {
   flex: 2.5;
   height: 60%;
+  min-height: 20rem;
 
   // Ipad pro
   @media (max-width: 1024px) {

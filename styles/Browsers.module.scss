@@ -1,0 +1,172 @@
+@font-face {
+  font-family: Cubano;
+  src: url('../fonts/Cubano-Font-Family/Cubano.ttf');
+}
+
+.section2 {
+  position: relative;
+  width: 100%;
+  height: 200vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem 5rem;
+  scroll-behavior: smooth;
+  font-family: Cubano;
+
+  .text {
+    margin-top: 9rem;
+    font-size: 3rem;
+    text-align: center;
+  }
+
+  @media (max-width: 900px) {
+    .text {
+      font-size: 2rem;
+    }
+  }
+
+  @media (max-width: 500px) {
+    height: 100vh;
+    margin-top: 3rem;
+    padding: 1rem 3rem;
+
+    .text {
+      margin-top: 5rem;
+      font-size: 1.5rem;
+      transform: translateY(100%);
+    }
+  }
+}
+
+.section2_browsers {
+  width: 100%;
+  height: 40rem;
+  max-height: fit-content;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: flex-start;
+  gap: 1rem;
+  overflow-y: auto;
+  position: sticky;
+  bottom: 27%;
+  background-color: #212336;
+  transition: top 1s ease;
+  transform: translateY(50%);
+
+  @media (max-width: 900px) {
+    width: 180%;
+    min-height: 35rem;
+    transform: translateY(50%) scale(0.75);
+  }
+
+  @media (max-width: 500px) {
+    padding: 0;
+    width: 280%;
+    min-height: 40rem;
+    bottom: 0%;
+    transform: translateY(0) scale(0.43);
+  }
+}
+
+.second_browser {
+  width: 28rem;
+  height: 18rem;
+  position: relative;
+  top: 0;
+  background-color: #505581 !important;
+  transition: all 0.5s ease;
+}
+
+.first_browser {
+  width: 28rem;
+  height: 18rem;
+  border-radius: 14px;
+
+  // @media (max-width: 768px) {
+  //   width: 28rem !important;
+  // }
+}
+
+.content {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  background-color: #343854;
+
+  * {
+    font-family: Cubano;
+  }
+
+  .dashboard {
+    width: 8rem;
+    height: 100%;
+    padding: 6px;
+    padding-top: 14px;
+    background-color: rgb(24, 25, 38);
+    transition: opacity 0.5s ease-in-out;
+
+    h5 {
+      font-size: 14px;
+    }
+
+    span {
+      font-size: 20px;
+    }
+
+    ul {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      margin-top: 1rem;
+      padding: 5px;
+      font-size: 12px;
+    }
+
+    li {
+      width: 100%;
+      border-radius: 3px;
+      padding: 2px;
+    }
+
+    li:nth-child(5) {
+      background-color: coral;
+    }
+  }
+
+  .charts_container {
+    flex: 3;
+    height: 100%;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.5s ease-in-out;
+
+    img {
+      height: auto;
+      height: 6rem;
+    }
+
+    & div:nth-child(1) img:last-child {
+      height: 7.02rem;
+    }
+
+    & div:nth-child(2) img {
+      height: 14.5rem;
+    }
+
+    div {
+      max-width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+}

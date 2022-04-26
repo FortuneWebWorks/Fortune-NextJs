@@ -180,18 +180,6 @@ body::-webkit-scrollbar-thumb {
 }
 
 /* Temp */
-.section2 {
-  position: relative;
-  width: 100%;
-  height: 200vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  align-items: center;
-  padding: 1rem 5rem;
-  scroll-behavior: smooth;
-  font-family: Cubano;
-}
 .section2 * {
   font-family: inherit;
   font-weight: bold;
@@ -222,13 +210,13 @@ body::-webkit-scrollbar-thumb {
   background-color: #505581 !important;
   position: relative;
 }
-.section2 h2 {
+/* .section2 h2 {
   flex: 1;
   font-size: 3rem;
   text-align: center;
   margin-top: 10rem;
-}
-.section2 .section2-icnon {
+} */
+/* .section2 .section2-icnon {
   max-width: 35rem;
   width: 100%;
   height: 45%;
@@ -237,10 +225,9 @@ body::-webkit-scrollbar-thumb {
   justify-content: space-between;
   align-items: center;
   border-radius: 14px;
-  background-color: #1e1e1e;
   flex: 3;
   overflow: hidden;
-}
+} */
 .section2 .section2-searchbar {
   width: 100%;
   height: fit-content;
@@ -374,72 +361,6 @@ body::-webkit-scrollbar-thumb {
   width: 100%;
   height: 100%;
 }
-/* @media (max-width: 1024px) {
-  .section2 {
-    gap: 3rem;
-    padding: 0 3px;
-  }
-  .section2 .section2-browsers {
-    width: 100%;
-    height: 50rem;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    gap: 4rem;
-    padding: 0 8rem;
-    bottom: 27%;
-    padding-bottom: 8rem;
-  }
-  .section2 h2 {
-    flex: unset;
-    font-size: 3rem;
-    font-weight: bold;
-    padding: 0 1rem;
-  }
-}
-@media (max-width: 768px) {
-  .section2 .section2-browsers {
-    bottom: 35%;
-  }
-}
-@media (max-width: 450px) {
-  .section2 {
-    padding: 2rem 2px;
-  }
-  .section2 .section2-browsers {
-    padding: 0 2rem;
-    bottom: 30%;
-  }
-  .section2 h2 {
-    font-size: 2rem;
-    padding: 0 2rem;
-  }
-  .section2 .section2-icnon {
-    height: 35%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    border-radius: 14px;
-    background-color: #1e1e1e;
-    flex: unset;
-    overflow: hidden;
-  }
-  .section2 .section2-content .cc-container {
-    max-height: 55%;
-  }
-  .section2 .section2-content > div:first-child {
-    flex: 8;
-  }
-  .section2 .section2-content > div:nth-child(2) {
-    flex: 1;
-    margin-top: 1rem;
-    background-color: transparent;
-  }
-  .section2 .section2-content > div:last-child {
-    flex: 9;
-  }
-} */
 
 .charts_browser_container {
   position: absolute;
@@ -453,15 +374,6 @@ body::-webkit-scrollbar-thumb {
   align-items: center;
 }
 
-/* .charts_browser_container div {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  justify-items: center;
-  align-content: center;
-  width: 100%;
-  height: 100%;
-} */
-
 .charts_browser_container div {
   max-width: 100%;
   height: 100%;
@@ -473,63 +385,4 @@ body::-webkit-scrollbar-thumb {
 
 .charts_browser_container div img {
   width: 7rem;
-}
-
-@media (max-width: 1024px) {
-  .charts_browser_container div img {
-    width: 7rem;
-  }
-}
-
-@media (max-width: 768px) {
-  .section2 .section2-browsers {
-    padding: 0 2rem;
-    bottom: 40%;
-    flex-direction: column;
-  }
-}
-
-@media (max-width: 450px) {
-  .section2 {
-    padding: 2rem 2px;
-    margin-bottom: 17rem;
-  }
-  .section2 .section2-browsers {
-    padding: 0 2rem;
-    bottom: 40%;
-    flex-direction: column;
-  }
-  .section2 h2 {
-    font-size: 1.7rem;
-    padding: 0 2rem;
-  }
-  .section2 .section2-icnon {
-    height: 35%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    border-radius: 14px;
-    background-color: #1e1e1e;
-    flex: unset;
-    overflow: hidden;
-  }
-  .section2 .section2-content .cc-container {
-    max-height: 55%;
-  }
-  .section2 .section2-content > div:first-child {
-    flex: 8;
-  }
-  .section2 .section2-content > div:nth-child(2) {
-    flex: 1;
-    margin-top: 1rem;
-    background-color: transparent;
-  }
-  .section2 .section2-content > div:last-child {
-    flex: 9;
-  }
-
-  .charts_browser_container div img {
-    width: 4.5rem;
-  }
 }

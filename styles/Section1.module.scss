@@ -7,7 +7,7 @@
 
 .section1 {
   width: 100%;
-  min-height: 32rem;
+  min-height: 40rem;
   height: 82vh;
   display: flex;
   flex-direction: row;
@@ -17,7 +17,6 @@
   padding: 0 3rem;
   // padding-bottom: 12rem;
   overflow: hidden;
-  margin-bottom: 5rem;
 
   & * {
     font-family: Cubano;
@@ -233,6 +232,8 @@
   // Ipad
   @media (max-width: 768px) {
     justify-content: flex-start;
+    height: 47rem;
+    margin-bottom: 0;
 
     h1 {
       font-size: 2.3rem;

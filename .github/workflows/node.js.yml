@@ -27,5 +27,5 @@ jobs:
         cache: 'npm'
     - run: npm i
     - run: npm run build
-    - run: npm PORT=8000 next start
+    - run: npm start
     - run: pm2 start fortune

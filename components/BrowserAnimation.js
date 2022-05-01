@@ -55,7 +55,7 @@ function BrowserAnimation() {
       scrollTrigger: {
         trigger: section,
         start: '-20%',
-        end: '200%',
+        end: '+=' + window.innerHeight * 10,
         scrub: true,
         markers: true,
         pin: true,
@@ -66,13 +66,13 @@ function BrowserAnimation() {
     tl.fromTo(
       firstText,
       { top: '0%', opacity: 1 },
-      { top: '-50%', opacity: 0 }
+      { top: '-50%', opacity: 0, duration: 3 }
     );
     // step 2: second text
     tl.fromTo(
       secondText,
       { top: '50%', opacity: 0 },
-      { top: '0%', opacity: 1 },
+      { top: '-10%', opacity: 1, duration: 3 },
       '50%'
     );
     // step 4: bye bye
@@ -85,6 +85,7 @@ function BrowserAnimation() {
       {
         scale: '1',
         opacity: 1,
+        duration: 3,
       }
     );
     // fade dashboard out
@@ -109,7 +110,7 @@ function BrowserAnimation() {
         translateY: '0',
         opacity: 0,
       },
-      { scale: '1', translateY: '-65%', opacity: 1 },
+      { scale: '1', translateY: '-85%', opacity: 1 },
       '<'
     );
     // step 5: bring the right browser a bit top
@@ -118,7 +119,7 @@ function BrowserAnimation() {
       {
         translateY: '0',
       },
-      { translateY: '40%' },
+      { translateY: '10%' },
       '<'
     );
     // step 4: bye bye
@@ -184,6 +185,8 @@ function BrowserAnimation() {
               height: '100%',
               width: '100%',
               backgroundColor: '#1e1e1e',
+              borderRadius: '12px',
+              overflow: 'hidden',
             }}
           >
             <div className="section2-searchbar">
@@ -238,6 +241,249 @@ function BrowserAnimation() {
               <div>main.css</div>
               <div id="css" ref={(el) => (css = el)}></div>
             </div>
+          </div>
+
+          <div className={styles.background} ref={(el) => (background = el)}>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              className="bye"
+              src="../svg/byeEmoji.svg"
+              alt=""
+              style={{
+                bottom: '25vh',
+                left: '8vw',
+                height: '8vh',
+                width: '8vh',
+              }}
+            />
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              className="bye"
+              src="../svg/byeEmoji.svg"
+              alt=""
+              style={{
+                bottom: '23vh',
+                right: '32vw',
+                height: '5vh',
+                width: '5vh',
+              }}
+            />
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              className="bye"
+              src="../svg/byeEmoji.svg"
+              alt=""
+              style={{
+                top: '24vh',
+                left: '-4vw',
+                height: '13vh',
+                width: '13vh',
+              }}
+            />
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              className="bye"
+              src="../svg/byeEmoji.svg"
+              alt=""
+              style={{
+                bottom: '-5vh',
+                right: '18vw',
+                height: '13vh',
+                width: '13vh',
+              }}
+            />
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              className="bye"
+              src="../svg/byeEmoji.svg"
+              alt=""
+              style={{
+                bottom: '-3vh',
+                left: '15vw',
+                height: '13vh',
+                width: '13vh',
+              }}
+            />
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              className="bye"
+              src="../svg/byeEmoji.svg"
+              alt=""
+              style={{
+                top: '20vh',
+                right: '-2vw',
+                height: '13vh',
+                width: '13vh',
+              }}
+            />
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              className="bye"
+              src="../svg/byeEmoji.svg"
+              alt=""
+              style={{
+                bottom: '16vh',
+                left: '35vw',
+                height: '5vh',
+                width: '5vh',
+              }}
+            />
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              className="bye"
+              src="../svg/byeEmoji.svg"
+              alt=""
+              style={{
+                bottom: '10vh',
+                right: '-5vw',
+                height: '13vh',
+                width: '13vh',
+              }}
+            />
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              className="bye"
+              src="../svg/byeEmoji.svg"
+              alt=""
+              style={{
+                bottom: '37vh',
+                left: '3vw',
+                height: '5vh',
+                width: '5vh',
+              }}
+            />
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              className="bye"
+              src="../svg/byeEmoji.svg"
+              alt=""
+              style={{
+                top: '38vh',
+                right: '-3vw',
+                height: '5vh',
+                width: '5vh',
+              }}
+            />
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              className="bye"
+              src="../svg/byeEmoji.svg"
+              alt=""
+              style={{
+                bottom: '36vh',
+                right: '10vw',
+                height: '5vh',
+                width: '5vh',
+              }}
+            />
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              className="bye"
+              src="../svg/byeEmoji.svg"
+              alt=""
+              style={{
+                bottom: '30vh',
+                right: '40vw',
+                height: '8vh',
+                width: '8vh',
+              }}
+            />
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              className="bye"
+              src="../svg/byeEmoji.svg"
+              alt=""
+              style={{
+                bottom: '25vh',
+                right: '7vw',
+                height: '8vh',
+                width: '8vh',
+              }}
+            />
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              className="bye"
+              src="../svg/byeEmoji.svg"
+              alt=""
+              style={{
+                bottom: '8vh',
+                right: '22vw',
+                height: '8vh',
+                width: '8vh',
+              }}
+            />
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              className="bye"
+              src="../svg/byeEmoji.svg"
+              alt=""
+              style={{
+                top: '1vh',
+                right: '10vw',
+                height: '5vh',
+                width: '5vh',
+              }}
+            />
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              className="bye"
+              src="../svg/byeEmoji.svg"
+              alt=""
+              style={{
+                bottom: '12vh',
+                left: '2vw',
+                height: '8vh',
+                width: '8vh',
+              }}
+            />
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              className="bye"
+              src="../svg/byeEmoji.svg"
+              alt=""
+              style={{
+                top: '35vh',
+                left: '48vw',
+                height: '5vh',
+                width: '5vh',
+              }}
+            />
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              className="bye"
+              src="../svg/byeEmoji.svg"
+              alt=""
+              style={{
+                top: '20vh',
+                left: '35vw',
+                height: '8vh',
+                width: '8vh',
+              }}
+            />
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              className="bye"
+              src="../svg/byeEmoji.svg"
+              alt=""
+              style={{
+                top: '-5vh',
+                left: '13vw',
+                height: '13vh',
+                width: '13vh',
+              }}
+            />
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              className="bye"
+              src="../svg/byeEmoji.svg"
+              alt=""
+              style={{
+                top: '-1vh',
+                right: '40vw',
+                height: '8vh',
+                width: '8vh',
+              }}
+            />
           </div>
         </div>
 
@@ -299,248 +545,6 @@ function BrowserAnimation() {
               </div>
             </div>
           </div>
-        </div>
-        <div className={styles.background} ref={(el) => (background = el)}>
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            className="bye"
-            src="../svg/byeEmoji.svg"
-            alt=""
-            style={{
-              bottom: '25vh',
-              left: '8vw',
-              height: '8vh',
-              width: '8vh',
-            }}
-          />
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            className="bye"
-            src="../svg/byeEmoji.svg"
-            alt=""
-            style={{
-              bottom: '23vh',
-              right: '32vw',
-              height: '5vh',
-              width: '5vh',
-            }}
-          />
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            className="bye"
-            src="../svg/byeEmoji.svg"
-            alt=""
-            style={{
-              top: '24vh',
-              left: '-4vw',
-              height: '13vh',
-              width: '13vh',
-            }}
-          />
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            className="bye"
-            src="../svg/byeEmoji.svg"
-            alt=""
-            style={{
-              bottom: '-5vh',
-              right: '18vw',
-              height: '13vh',
-              width: '13vh',
-            }}
-          />
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            className="bye"
-            src="../svg/byeEmoji.svg"
-            alt=""
-            style={{
-              bottom: '-3vh',
-              left: '15vw',
-              height: '13vh',
-              width: '13vh',
-            }}
-          />
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            className="bye"
-            src="../svg/byeEmoji.svg"
-            alt=""
-            style={{
-              top: '20vh',
-              right: '-2vw',
-              height: '13vh',
-              width: '13vh',
-            }}
-          />
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            className="bye"
-            src="../svg/byeEmoji.svg"
-            alt=""
-            style={{
-              bottom: '16vh',
-              left: '35vw',
-              height: '5vh',
-              width: '5vh',
-            }}
-          />
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            className="bye"
-            src="../svg/byeEmoji.svg"
-            alt=""
-            style={{
-              bottom: '10vh',
-              right: '-5vw',
-              height: '13vh',
-              width: '13vh',
-            }}
-          />
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            className="bye"
-            src="../svg/byeEmoji.svg"
-            alt=""
-            style={{
-              bottom: '37vh',
-              left: '3vw',
-              height: '5vh',
-              width: '5vh',
-            }}
-          />
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            className="bye"
-            src="../svg/byeEmoji.svg"
-            alt=""
-            style={{
-              top: '38vh',
-              right: '-3vw',
-              height: '5vh',
-              width: '5vh',
-            }}
-          />
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            className="bye"
-            src="../svg/byeEmoji.svg"
-            alt=""
-            style={{
-              bottom: '36vh',
-              right: '10vw',
-              height: '5vh',
-              width: '5vh',
-            }}
-          />
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            className="bye"
-            src="../svg/byeEmoji.svg"
-            alt=""
-            style={{
-              bottom: '30vh',
-              right: '40vw',
-              height: '8vh',
-              width: '8vh',
-            }}
-          />
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            className="bye"
-            src="../svg/byeEmoji.svg"
-            alt=""
-            style={{
-              bottom: '25vh',
-              right: '7vw',
-              height: '8vh',
-              width: '8vh',
-            }}
-          />
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            className="bye"
-            src="../svg/byeEmoji.svg"
-            alt=""
-            style={{
-              bottom: '8vh',
-              right: '22vw',
-              height: '8vh',
-              width: '8vh',
-            }}
-          />
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            className="bye"
-            src="../svg/byeEmoji.svg"
-            alt=""
-            style={{
-              top: '1vh',
-              right: '10vw',
-              height: '5vh',
-              width: '5vh',
-            }}
-          />
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            className="bye"
-            src="../svg/byeEmoji.svg"
-            alt=""
-            style={{
-              bottom: '12vh',
-              left: '2vw',
-              height: '8vh',
-              width: '8vh',
-            }}
-          />
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            className="bye"
-            src="../svg/byeEmoji.svg"
-            alt=""
-            style={{
-              top: '35vh',
-              left: '48vw',
-              height: '5vh',
-              width: '5vh',
-            }}
-          />
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            className="bye"
-            src="../svg/byeEmoji.svg"
-            alt=""
-            style={{
-              top: '20vh',
-              left: '35vw',
-              height: '8vh',
-              width: '8vh',
-            }}
-          />
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            className="bye"
-            src="../svg/byeEmoji.svg"
-            alt=""
-            style={{
-              top: '-5vh',
-              left: '13vw',
-              height: '13vh',
-              width: '13vh',
-            }}
-          />
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            className="bye"
-            src="../svg/byeEmoji.svg"
-            alt=""
-            style={{
-              top: '-1vh',
-              right: '40vw',
-              height: '8vh',
-              width: '8vh',
-            }}
-          />
         </div>
       </div>
       <h2

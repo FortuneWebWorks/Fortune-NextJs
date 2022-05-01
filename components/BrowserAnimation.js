@@ -132,6 +132,7 @@ function BrowserAnimation() {
       {
         scale: '0',
         opacity: 0,
+        duration: 3,
       }
     );
     // remove the container

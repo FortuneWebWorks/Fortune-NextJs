@@ -206,7 +206,6 @@ function BrowserAnimation() {
               width: '100%',
               backgroundColor: '#1e1e1e',
               borderRadius: '12px',
-              overflow: 'hidden',
             }}
           >
             <div className="section2-searchbar">
@@ -220,6 +219,7 @@ function BrowserAnimation() {
               <div className="navigation">
                 <div></div>
               </div>
+              <h2 className={styles.broser_title}>wasnt build by fortune</h2>
             </div>
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
@@ -566,6 +566,7 @@ function BrowserAnimation() {
               </div>
             </div>
           </div>
+          <h2 className={styles.broser_title}>wasnt build by fortune</h2>
         </div>
       </div>
       <h2

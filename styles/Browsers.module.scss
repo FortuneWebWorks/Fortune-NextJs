@@ -78,6 +78,13 @@
     transform: scale(0.5);
     width: 272%;
   }
+  @media (max-width: 420px) {
+    .second_browser {
+      .charts_container {
+        transform: scale(0.8);
+      }
+    }
+  }
   @media (max-width: 400px) {
     transform: scale(0.6, 0.7) translateY(-5%);
     width: 150%;
@@ -113,9 +120,20 @@
   position: relative;
   top: 0;
   border-radius: 10px;
-  overflow: hidden;
+  // overflow-y: unset;
+  // overflow-x: hidden;
   background-color: #505581 !important;
   transition: all 0.5s ease;
+}
+
+.broser_title {
+  z-index: 100;
+  position: absolute;
+  bottom: -17px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  text-align: center;
 }
 
 .first_browser {

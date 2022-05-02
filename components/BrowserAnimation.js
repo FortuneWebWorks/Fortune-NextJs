@@ -131,7 +131,7 @@ function BrowserAnimation() {
       {
         translateY: '0',
       },
-      { translateY: '10%' },
+      { translateY: '0%' },
       '<'
     );
     // step 4: bye bye
@@ -247,7 +247,7 @@ function BrowserAnimation() {
               {/* <div id="html" className={styles.html} ref={(el) => (html = el)}> */}
               <pre
                 className="language-html"
-                style={{ width: '100%', height: '85%', overflow: 'hidden' }}
+                style={{ width: '100%', height: '100%', overflow: 'hidden' }}
                 ref={(el) => (html = el)}
               >
                 <code id="htmlSnippet">
@@ -263,15 +263,6 @@ function BrowserAnimation() {
               </pre>
             </div>
             {/* </div> */}
-            <div className={editorsStyle.editors_container}>
-              <div>
-                <span></span>
-                <span></span>
-                <span></span>
-              </div>
-              <div>main.css</div>
-              <div id="css" ref={(el) => (css = el)}></div>
-            </div>
           </div>
 
           <div className={styles.background} ref={(el) => (background = el)}>

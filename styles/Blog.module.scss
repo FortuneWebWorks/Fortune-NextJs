@@ -11,6 +11,7 @@
 }
 
 .blog_body {
+  height: 52vh;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -138,4 +139,9 @@
       font-size: 0.9rem;
     }
   }
+}
+
+.footer {
+  position: absolute;
+  bottom: -30%;
 }

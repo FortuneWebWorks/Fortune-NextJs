@@ -1,9 +1,10 @@
 import style from '@/styles/Footer.module.scss';
 import HatAnimation from './HatAnimation';
 import styles from '@/styles/Header.module.scss';
+import tempStyle from '@/styles/Blog.module.scss';
 function Footer() {
   return (
-    <footer className={style.footer}>
+    <footer className={`${style.footer} ${tempStyle.footer}`}>
       <div className={style.footer_content_1}>
         <div className={`${styles.logo} ${style.logo}`}>
           <HatAnimation notEffect="true" />

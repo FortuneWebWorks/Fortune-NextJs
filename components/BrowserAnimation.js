@@ -1,9 +1,11 @@
 import { useRef, useEffect } from 'react';
 import styles from '@/styles/Browsers.module.scss';
 import editorsStyle from '@/styles/CodeEditors.module.scss';
-import { gsap, Power3 } from 'gsap/dist/gsap';
+import { gsap, Power3, SteppedEase } from 'gsap/dist/gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
-gsap.registerPlugin(ScrollTrigger);
+import { TextPlugin } from 'gsap/dist/TextPlugin';
+gsap.registerPlugin(ScrollTrigger, TextPlugin);
+import Prism from 'prismjs';
 
 function BrowserAnimation() {
   let section = useRef(null);
@@ -30,26 +32,37 @@ function BrowserAnimation() {
   `;
 
   useEffect(() => {
+    Prism.highlightAll();
     // HTML
-    const splittedText = htmlCode.split('');
-    if (html.innerHTML === '') {
-      splittedText.forEach((item) => {
+    const splittedText = [...html.children[0].childNodes];
+    console.log(splittedText);
+
+    splittedText.forEach((item) => {
+      if (
+        item.nodeType === 3 &&
+        item.nodeValue !== '\n  ' &&
+        item.textContent.trim() !== ''
+      ) {
         const span = document.createElement('span');
-        span.innerHTML = item;
-        span.className = 'typingTextHtml';
-        html.appendChild(span);
-      });
-    }
+        span.innerHTML = item.nodeValue;
+        span.style.display = 'inline-block';
+        span.style.overflow = 'hidden';
+        item.replaceWith(span);
+      } else if (item.nodeValue !== '\n  ' && item.textContent.trim() !== '') {
+        item.style.display = 'inline-block';
+        item.style.overflow = 'hidden';
+      }
+    });
     // CSS
-    const splittedTextCss = cssCode.split('');
-    if (css.innerHTML === '') {
-      splittedTextCss.forEach((item) => {
-        const span = document.createElement('span');
-        span.innerHTML = item;
-        span.className = 'typingTextCss';
-        css.appendChild(span);
-      });
-    }
+    // const splittedTextCss = cssCode.split('');
+    // if (css.innerHTML === '') {
+    //   splittedTextCss.forEach((item) => {
+    //     const span = document.createElement('span');
+    //     span.innerHTML = item;
+    //     span.className = 'typingTextCss';
+    //     css.appendChild(span);
+    //   });
+    // }
 
     const tl = gsap.timeline({
       scrollTrigger: {
@@ -57,7 +70,6 @@ function BrowserAnimation() {
         start: '-20%',
         end: '+=' + window.innerHeight * 10,
         scrub: true,
-        markers: true,
         pin: true,
       },
     });
@@ -145,12 +157,17 @@ function BrowserAnimation() {
         display: 'none',
       }
     );
+    const targets = html.children[0].children;
+    // cursor blinking
+    // gsap.fromTo(
+    //   '#cursor',
+    //   { autoAlpha: 0, x: -20 },
+    //   { autoAlpha: 1, duration: 0.5, repeat: -1, ease: SteppedEase.config(1) }
+    // );
     // typing html
-    tl.fromTo('.typingTextHtml', { opacity: 0 }, { opacity: 1, stagger: 0.1 });
+    tl.fromTo(targets, { maxWidth: 0 }, { maxWidth: '20rem', stagger: 0.4 });
     // dashboard fadein
     tl.fromTo(dashboard, { opacity: 0 }, { opacity: 1 }, '<60%');
-    // typing css
-    tl.fromTo('.typingTextCss', { opacity: 0 }, { opacity: 1, stagger: 0.1 });
     // charts fadein
     tl.fromTo(
       '.chart',
@@ -160,7 +177,7 @@ function BrowserAnimation() {
         stagger: 1,
         duration: 1,
       },
-      '>10%'
+      '<'
     );
   });
 
@@ -227,12 +244,25 @@ function BrowserAnimation() {
                 <span>index.html</span>
               </div>
 
-              <div
-                id="html"
-                className={styles.html}
+              {/* <div id="html" className={styles.html} ref={(el) => (html = el)}> */}
+              <pre
+                className="language-html"
+                style={{ width: '100%', height: '85%', overflow: 'hidden' }}
                 ref={(el) => (html = el)}
-              ></div>
+              >
+                <code id="htmlSnippet">
+                  {`
+  <div>
+    <h1>Hello World</h1>
+    <p>Oops</p>
+    <span>i was there!</span>
+  </div>
+  `}
+                </code>
+                {/* <span id="cursor">|</span> */}
+              </pre>
             </div>
+            {/* </div> */}
             <div className={editorsStyle.editors_container}>
               <div>
                 <span></span>

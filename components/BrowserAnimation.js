@@ -237,7 +237,7 @@ function BrowserAnimation() {
           {/* Code editors */}
           <div ref={(el) => (fadeIner = el)} className={editorsStyle.container}>
             <pre
-              className="language-html"
+              className="language-javascript"
               style={{
                 width: '100%',
                 height: '100%',
@@ -253,11 +253,20 @@ function BrowserAnimation() {
               </div>
               <code id="htmlSnippet">
                 {`
-  <div>
-    <h1>Hello World</h1>
-    <p>Oops</p>
-    <span>i was there!</span>
-  </div>
+import React from 'react';
+
+class MyComponent extends React.Component {
+  render(){
+    return (
+      <React.Fragment>
+        <div>I am an element!</div>
+        <button>I am another element</button>
+      </React.Fragment>
+    );
+  }
+}
+
+export default MyComponent;
   `}
               </code>
               {/* <span id="cursor">|</span> */}

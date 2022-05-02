@@ -34,7 +34,7 @@ function BrowserAnimation() {
   useEffect(() => {
     Prism.highlightAll();
     // HTML
-    const splittedText = [...html.children[0].childNodes];
+    const splittedText = [...html.children[1].childNodes];
     console.log(splittedText);
 
     splittedText.forEach((item) => {
@@ -157,7 +157,8 @@ function BrowserAnimation() {
         display: 'none',
       }
     );
-    const targets = html.children[0].children;
+    const targets = html.children[1].children;
+    console.log(targets);
     // cursor blinking
     // gsap.fromTo(
     //   '#cursor',
@@ -234,35 +235,32 @@ function BrowserAnimation() {
           </div>
           {/* Code editors */}
           <div ref={(el) => (fadeIner = el)} className={editorsStyle.container}>
-            <div className={editorsStyle.editors_container}>
+            <pre
+              className="language-html"
+              style={{
+                width: '100%',
+                height: '100%',
+                overflow: 'hidden',
+                borderRadius: '10px',
+              }}
+              ref={(el) => (html = el)}
+            >
               <div>
-                <span></span>
-                <span></span>
-                <span></span>
+                <p></p>
+                <p></p>
+                <p></p>
               </div>
-              <div>
-                <span>index.html</span>
-              </div>
-
-              {/* <div id="html" className={styles.html} ref={(el) => (html = el)}> */}
-              <pre
-                className="language-html"
-                style={{ width: '100%', height: '100%', overflow: 'hidden' }}
-                ref={(el) => (html = el)}
-              >
-                <code id="htmlSnippet">
-                  {`
+              <code id="htmlSnippet">
+                {`
   <div>
     <h1>Hello World</h1>
     <p>Oops</p>
     <span>i was there!</span>
   </div>
   `}
-                </code>
-                {/* <span id="cursor">|</span> */}
-              </pre>
-            </div>
-            {/* </div> */}
+              </code>
+              {/* <span id="cursor">|</span> */}
+            </pre>
           </div>
 
           <div className={styles.background} ref={(el) => (background = el)}>

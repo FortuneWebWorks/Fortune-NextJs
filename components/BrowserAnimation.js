@@ -35,7 +35,6 @@ function BrowserAnimation() {
     Prism.highlightAll();
     // HTML
     const splittedText = [...html.children[1].childNodes];
-    console.log(splittedText);
 
     splittedText.forEach((item) => {
       if (
@@ -68,7 +67,7 @@ function BrowserAnimation() {
       scrollTrigger: {
         trigger: section,
         start: '-20%',
-        end: '+=' + window.innerHeight * 10,
+        end: '+=' + window.innerHeight * 6,
         scrub: true,
         pin: true,
       },
@@ -92,7 +91,7 @@ function BrowserAnimation() {
         opacity: 1,
         duration: 3,
       },
-      '<50%'
+      '<'
     );
     // step 2: second text
     tl.fromTo(
@@ -159,7 +158,6 @@ function BrowserAnimation() {
       }
     );
     const targets = html.children[1].children;
-    console.log(targets);
     // cursor blinking
     // gsap.fromTo(
     //   '#cursor',
@@ -219,7 +217,9 @@ function BrowserAnimation() {
               <div className="navigation">
                 <div></div>
               </div>
-              <h2 className={styles.broser_title}>wasnt build by fortune</h2>
+              <h2
+                className={styles.broser_title}
+              >{`wasn't build by fortune`}</h2>
             </div>
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
@@ -566,7 +566,7 @@ function BrowserAnimation() {
               </div>
             </div>
           </div>
-          <h2 className={styles.broser_title}>wasnt build by fortune</h2>
+          <h2 className={styles.broser_title}>built by fortune</h2>
         </div>
       </div>
       <h2

@@ -17,7 +17,7 @@ function Layout({ children, title, desc }) {
   return (
     <div>
       <Head>
-        <title>{title}</title>
+        <title>FORTUNE WEB WORKS</title>
         <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="description" content={desc} />

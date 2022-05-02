@@ -67,7 +67,7 @@ function BrowserAnimation() {
       scrollTrigger: {
         trigger: section,
         start: '-20%',
-        end: '+=' + window.innerHeight * 6,
+        end: '+=' + window.innerHeight * 3,
         scrub: true,
         pin: true,
       },

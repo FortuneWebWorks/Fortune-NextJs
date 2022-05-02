@@ -80,13 +80,6 @@ function BrowserAnimation() {
       { top: '0%', opacity: 1 },
       { top: '-50%', opacity: 0, duration: 3 }
     );
-    // step 2: second text
-    tl.fromTo(
-      secondText,
-      { top: '50%', opacity: 0 },
-      { top: '-10%', opacity: 1, duration: 3 },
-      '50%'
-    );
     // step 4: bye bye
     tl.fromTo(
       '.bye',
@@ -97,6 +90,27 @@ function BrowserAnimation() {
       {
         scale: '1',
         opacity: 1,
+        duration: 3,
+      },
+      '<50%'
+    );
+    // step 2: second text
+    tl.fromTo(
+      secondText,
+      { top: '50%', opacity: 0 },
+      { top: '-10%', opacity: 1, duration: 3 },
+      '50%'
+    );
+    // hide bye byes
+    tl.fromTo(
+      '.bye',
+      {
+        scale: '1',
+        opacity: 1,
+      },
+      {
+        scale: '0',
+        opacity: 0,
         duration: 3,
       }
     );
@@ -133,19 +147,6 @@ function BrowserAnimation() {
       },
       { translateY: '0%' },
       '<'
-    );
-    // step 4: bye bye
-    tl.fromTo(
-      '.bye',
-      {
-        scale: '1',
-        opacity: 1,
-      },
-      {
-        scale: '0',
-        opacity: 0,
-        duration: 3,
-      }
     );
     // remove the container
     tl.fromTo(

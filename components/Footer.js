@@ -5,7 +5,7 @@ function Footer() {
   return (
     <footer className={style.footer}>
       <div className={style.footer_content_1}>
-        <div className={styles.logo}>
+        <div className={`${styles.logo} ${style.logo}`}>
           <HatAnimation notEffect="true" />
         </div>
         <span>fortune web works</span>

@@ -37,8 +37,11 @@
     }
   }
   @media (max-width: 400px) {
+    padding: 1rem !important;
+
     .text {
-      font-size: 1.6rem;
+      width: 65%;
+      font-size: 1.4rem;
     }
   }
 }
@@ -76,8 +79,31 @@
     width: 272%;
   }
   @media (max-width: 400px) {
-    transform: scale(0.3);
-    width: 500%;
+    transform: scale(0.6, 0.7) translateY(-5%);
+    width: 150%;
+    height: fit-content;
+    flex-direction: column;
+    padding: 1rem !important;
+    gap: 1rem;
+
+    .second_browser {
+      // width: fit-content;
+      transform: scale(0.9);
+    }
+
+    .first_browser {
+      transform: translateY(-20%) scale(0.9);
+      // width: fit-content;
+    }
+  }
+  @media (max-width: 393px) {
+    width: 130%;
+  }
+  @media (max-width: 360px) {
+    width: 145%;
+  }
+  @media (max-width: 330px) {
+    width: 190%;
   }
 }
 

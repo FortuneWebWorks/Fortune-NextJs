@@ -28,14 +28,6 @@
     gap: 10px;
   }
 
-  .logo {
-    position: relative;
-    width: 3.3rem;
-    height: 3.3rem;
-    border-radius: 18px;
-    overflow: hidden;
-  }
-
   .footer_content_1 span {
     margin-top: 10px;
     font-size: 1.5rem;
@@ -74,10 +66,16 @@
     .footer_content_2-blog {
       display: block;
     }
+  }
+
+  // 540
+  @media (max-width: 540px) {
+    .footer_content_2 span {
+      font-size: 2rem;
+    }
 
     .logo {
-      height: 100%;
-      border-radius: 40px;
+      transform: scale(0.7);
     }
   }
 
@@ -107,11 +105,6 @@
 
     .footer_content_2-blog {
       display: block;
-    }
-
-    .logo {
-      height: 100%;
-      border-radius: 27px;
     }
   }
 }

@@ -17,19 +17,6 @@ function BrowserAnimation() {
   let secondBrowser = useRef(null);
   let dashboard = useRef(null);
   let html = useRef(null);
-  let css = useRef(null);
-  let htmlCode = `
-    <div>Test</div>
-    <p>Hello world</p>
-    <span>Opps</span>
-  `;
-  let cssCode = `
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin: 0 auto;
-  `;
 
   useEffect(() => {
     Prism.highlightAll();

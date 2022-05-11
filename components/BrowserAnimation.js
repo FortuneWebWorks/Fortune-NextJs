@@ -39,16 +39,7 @@ function BrowserAnimation() {
         item.style.overflow = 'hidden';
       }
     });
-    // CSS
-    // const splittedTextCss = cssCode.split('');
-    // if (css.innerHTML === '') {
-    //   splittedTextCss.forEach((item) => {
-    //     const span = document.createElement('span');
-    //     span.innerHTML = item;
-    //     span.className = 'typingTextCss';
-    //     css.appendChild(span);
-    //   });
-    // }
+
 
     const tl = gsap.timeline({
       scrollTrigger: {
